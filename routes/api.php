@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/uf', [UfController::class, 'get'])->name('get_uf');
 Route::get('/uf/{state_id}', [UfController::class, 'name'])->name('get_uf_name');
-Route::get('/uf/{state_id}/region', [UfController::class, 'region'])->name('get_uf_name');
+Route::get('/uf/{state_id}/region', [UfController::class, 'region'])->name('get_uf_region');
 Route::get('/cities/all', [CityController::class, 'all'])->name('get_cities_all');
 Route::get('/cities/{city}', [CityController::class, 'get'])->name('get_cities');
 
