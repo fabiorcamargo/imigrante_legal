@@ -64,7 +64,7 @@ Route::middleware(['splade'])->group(function () {
         SEO::openGraphSiteName(env('APP_NAME'));
         SEO::openGraphTitle('Home');
         SEO::openGraphUrl(env('APP_URL'));
-        SEO::openGraphImage(asset('/apple-touch-icon.png'));
+        SEO::openGraphImage(asset('/logo-800x800.png'));
         
         //dd(json_encode($states));
         return view('welcome', [
