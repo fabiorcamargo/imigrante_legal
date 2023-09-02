@@ -29,6 +29,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Str;
+use ProtoneMedia\Splade\Facades\SEO;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +60,11 @@ Route::middleware(['splade'])->group(function () {
 
         $states = States::pluck('title','id');
 
-
+        SEO::openGraphType('WebPage');
+        SEO::openGraphSiteName(env('APP_NAME'));
+        SEO::openGraphTitle('Home');
+        SEO::openGraphUrl(env('APP_URL'));
+        SEO::openGraphImage(public_path(asset('storage/assets/img/logo.svg')));
         
         //dd(json_encode($states));
         return view('welcome', [
