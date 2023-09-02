@@ -15,7 +15,7 @@ class CompanyJob extends Model
             'post_img' => ['required', 'file'],
             'company_id' => ['required', 'string'],
             'nome' => ['required', 'string', 'max:150'],
-            'sobre' => ['nullable', 'string', 'max:500000'],
+            'sobre' => ['nullable', 'string', 'max:1000000'],
             'descricao' => ['nullable', 'string', 'max:200'],
             'status' => ['nullable', 'string'],
            
