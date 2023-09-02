@@ -24,7 +24,7 @@ class CompanyJobController extends BaseController
     public function show(string $id)
     {
         $data = $this->model::find($id);
-        //dd($data->nome);
+        //dd($data->descricao);
         //dd($data);
         SEO::openGraphType('WebPage');
         SEO::openGraphSiteName(env('APP_NAME'));
