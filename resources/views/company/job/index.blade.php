@@ -1,5 +1,3 @@
-@seoTitle(__('Criar Currículo'))
-
 <x-app-layout>
     <x-slot:header>
         <div class="text-sm breadcrumbs pb-8">
