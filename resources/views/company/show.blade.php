@@ -1,13 +1,4 @@
-
-
-
 <x-app-layout>
-    <meta property="og:title" content="{{$data->logo}}">
-<meta property="og:description" content="{!!$data->sobre!!}">
-<meta property="og:image" content="{{$data->logo}}">
-<meta property="og:url" content="{{request()->url()}}">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="env('APP_NAME')">
     <x-slot:header>
         <div class="text-sm breadcrumbs pb-8">
             <ul>
