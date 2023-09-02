@@ -29,7 +29,7 @@ class CompanyJobController extends BaseController
         SEO::openGraphType('WebPage');
         SEO::openGraphSiteName(env('APP_NAME'));
         SEO::openGraphTitle(env('APP_NAME') . " | $data->nome" );
-        SEO::description($data->descricao);
+        SEO::description("$data->descricao");
         SEO::openGraphUrl(request()->url());
         SEO::openGraphImage(asset($data->post_img));
 
