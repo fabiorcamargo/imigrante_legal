@@ -19,7 +19,7 @@
           "url": "https://imigrantelegal.com.br",
           "logo": "https://imigrantelegal.com.br/storage/assets/img/logo.svg",
           "sameAs": [
-                "https://www.facebook.com/imigrantelegaloficial",
+                "https://www.facebook.com/imigrantelegaloficial"
             ]
         }
     </script>
