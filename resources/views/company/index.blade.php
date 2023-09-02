@@ -28,7 +28,7 @@
             <x-splade-table :for="$table">
 
                 <x-splade-cell nome>
-                    <a href="company/{{$item->id}}"> {{$item->nome}} </a>
+                    <a href="country/{{$item->id}}"> {{$item->nome}} </a>
                 </x-splade-cell>
 
                 <x-splade-cell state_id>

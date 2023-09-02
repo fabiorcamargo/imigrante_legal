@@ -15,7 +15,7 @@ class CompanyController extends BaseController
         $model = new Company();
         $table = new BaseTable($model);
 
-        parent::__construct($model, new CompanyForm($model), $table, 'company.create', 'company.index', 'company.index');
+        parent::__construct($model, new CompanyForm($model), $table, 'company.create', 'company.index', 'country.index');
     }
 
     public function show(string $id)

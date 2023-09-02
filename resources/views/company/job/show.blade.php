@@ -5,7 +5,7 @@
         <div class="text-sm breadcrumbs pb-8">
             <ul>
                 <li><a href="{{route('welcome')}}">Início</a></li>
-                <li><a href="{{route('company.show', ['company' => $data->getcompany()->first()->id])}}">{{$data->getcompany()->first()->nome}}</a></li>
+                <li><a href="{{route('country.show', ['country' => $data->getcompany()->first()->id])}}">{{$data->getcompany()->first()->nome}}</a></li>
                 <li>{{ $data->nome }}</li>
             </ul>
         </div>
@@ -22,7 +22,7 @@
                   <div class="flex flex-wrap justify-center">
                       <div class="w-full flex justify-center">
                           <div class="relative">
-                            <a href="{{route('company.show', ['company' => $data->getcompany()->first()->id])}}">
+                            <a href="{{route('country.show', ['country' => $data->getcompany()->first()->id])}}">
                             <img class="object-cover rounded-md h-full w-full  md:h-80 md:w-auto"
                                                     src="{{asset($data->getcompany()->first()->logo)}}"
                                                     alt="{{$data->nome}}">
@@ -49,7 +49,7 @@
               </div>
                 
     
-                <a href="/company/{{$data->getcompany()->first()->id}}" class="btn btn-sm ">
+                <a href="/country/{{$data->getcompany()->first()->id}}" class="btn btn-sm ">
                   Detalhes do País
                 </a>
     

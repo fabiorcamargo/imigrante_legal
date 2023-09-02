@@ -77,7 +77,7 @@
                             <div class="grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                                 @foreach ($data->jobs()->get() as $jobs)
 
-                                <a href="/vagas/{{$jobs->id}}" class="rounded-lg">
+                                <a href="/post/{{$jobs->id}}" class="rounded-lg">
                                     <div class="group relative">
                                         <div aria-hidden="true"
                                             class="absolute top-0 w-full h-full rounded-2xl bg-white drop-shadow-lg border-2 border-gray-100/75  transition duration-500 group-hover:scale-105">
@@ -118,7 +118,7 @@
 
                         @can('admin')
                         <div class="text-center pb-10">
-                            <a href="{{route('vagas.create', ['company' => $data->id])}}" class="btn btn-primary">Criar
+                            <a href="{{route('post.create', ['country' => $data->id])}}" class="btn btn-primary">Criar
                                 Post</a>
                         </div>
                         @endcan

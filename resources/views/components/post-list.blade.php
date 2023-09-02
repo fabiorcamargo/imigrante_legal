@@ -34,7 +34,7 @@
 
                     @foreach (App\Models\Company::all() as $jobs)
                     <div class="group relative">
-                        <a href="/company/{{$jobs->id}}">
+                        <a href="/country/{{$jobs->id}}">
                             <div aria-hidden="true"
                                 class="absolute top-0 w-full h-full rounded-2xl bg-white drop-shadow-lg border-2 border-gray-100/75  transition duration-500 group-hover:scale-105">
                             </div>

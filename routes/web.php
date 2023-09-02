@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTrainingController;
 use App\Http\Controllers\WorksController;
 use App\Mail\welcome_mail;
+use App\Models\Company;
+use App\Models\CompanyJob;
 use App\Models\States;
 use App\Models\User;
 use App\Models\UserCourse;
@@ -69,10 +71,10 @@ Route::middleware(['splade'])->group(function () {
         ]);
     })->name('welcome');
 
-    Route::resource('company', CompanyController::class);
+    Route::resource('country', CompanyController::class);
     //Route::get('/empresas', [CompanyController::class, 'index'])->name('empresas.index');
 
-    Route::resource('vagas', CompanyJobController::class);
+    Route::resource('post', CompanyJobController::class);
 
     Route::resource('lead', LeadController::class);
 
@@ -185,6 +187,16 @@ Route::middleware(['splade'])->group(function () {
     Route::get('/sitemap', function () {
         $sitemap = Sitemap::create()
         ->add(Url::create('/'));
+
+        $counties = Company::all();
+        foreach($counties as $country){
+            $sitemap->add(Url::create('country/'. $country->id));
+        }
+
+        $posts = CompanyJob::all();
+        foreach($posts as $post){
+            $sitemap->add(Url::create('post/'. $post->id));
+        }
         
         $sitemap->writeToFile(public_path('sitemap.xml'));
 

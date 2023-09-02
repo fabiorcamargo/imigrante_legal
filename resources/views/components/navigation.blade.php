@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('company.index')" :active="request()->routeIs('company.*')">
+                        <x-nav-link :href="route('country.index')" :active="request()->routeIs('country.*')">
                             {{ __('Empresas') }}
                         </x-nav-link>
                     </div>
