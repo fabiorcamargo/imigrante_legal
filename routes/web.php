@@ -65,6 +65,7 @@ Route::middleware(['splade'])->group(function () {
         SEO::openGraphTitle('Home');
         SEO::openGraphUrl(env('APP_URL'));
         SEO::openGraphImage(asset('/logo-800x800.png'));
+        SEO::description('O portal para quem sonha em morar no exterior! Aqui você vai encontrar dicas dos melhores países e indicações de progamas para quem deseja morar fora.');
         
         //dd(json_encode($states));
         return view('welcome', [
