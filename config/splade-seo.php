@@ -14,8 +14,8 @@ return [
 
     'defaults' => [
         'title'       => env('APP_NAME', 'Laravel Splade'),
-        'description' => 'Venha cadastrar o seu currículo no melhor portal de empregos do Brasil!',
-        'keywords'    => ['currículo, trabalho, emprego'],
+        'description' => 'O portal para quem sonha em morar no exterior!',
+        'keywords'    => ['exterior, trabalho, emprego, estados unidos, inglaterra, portugal, morar fora, morar no exterior'],
     ],
 
     'title_prefix'    => '',
@@ -25,7 +25,7 @@ return [
     'auto_canonical_link' => true,
 
     'open_graph' => [
-        'auto_fill' => false,
+        'auto_fill' => true,
         'image'     => null,
         'site_name' => null,
         'title'     => null,
@@ -34,7 +34,7 @@ return [
     ],
 
     'twitter' => [
-        'auto_fill'   => false,
+        'auto_fill'   => true,
         'card'        => null, // 'summary_large_image',
         'description' => null,
         'image'       => null,

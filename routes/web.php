@@ -30,7 +30,6 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Str;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +58,7 @@ Route::middleware(['splade'])->group(function () {
         
 
         $states = States::pluck('title','id');
+
 
         
         //dd(json_encode($states));

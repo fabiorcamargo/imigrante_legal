@@ -3,6 +3,12 @@
 @seoKeywords('exterior, trabalho, emprego, estados unidos, inglaterra, portugal, morar fora, morar no exterior')
 
 
+SEO::openGraphType('WebPage');
+SEO::openGraphSiteName('My Application');
+SEO::openGraphTitle('Home Page');
+SEO::openGraphUrl('https://my.app/home');
+SEO::openGraphImage(public_path('home.png'));
+
 <x-app-layout>
 
 
