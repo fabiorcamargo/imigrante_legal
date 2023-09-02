@@ -17,7 +17,7 @@
           "name": "Imigrante Legal",
           "description": "O portal para quem sonha em morar no exterior! Aqui você vai encontrar dicas dos melhores países e indicações de progamas para quem deseja morar fora.",
           "url": "https://imigrantelegal.com.br",
-          "logo": "https://imigrantelegal.com.br/storage/assets/img/logo.svg"
+          "logo": "https://imigrantelegal.com.br/storage/assets/img/logo.svg",
           "sameAs": [
                 "https://www.facebook.com/imigrantelegaloficial",
             ]
