@@ -6,6 +6,7 @@ use App\Forms\CompanyJobForm;
 use App\Models\CompanyJob;
 use App\Tables\BaseTable;
 use Illuminate\Http\Request;
+use ProtoneMedia\Splade\Facades\SEO;
 
 class CompanyJobController extends BaseController
 {
@@ -23,6 +24,15 @@ class CompanyJobController extends BaseController
     public function show(string $id)
     {
         $data = $this->model::find($id);
+
+        //dd($data);
+        SEO::openGraphType('WebPage');
+        SEO::openGraphSiteName(env('APP_NAME'));
+        SEO::openGraphTitle(env('APP_NAME') . " | $data->nome" );
+        SEO::description($data->descricao);
+        SEO::openGraphUrl(request()->url());
+        SEO::openGraphImage(asset($data->post_img));
+
         return view('company.job.show', [
             'data' => $data ]);
     }
