@@ -18,7 +18,7 @@ class CompanyJobController extends BaseController
         $this->model = $model;
         $table = new BaseTable($model);
 
-        parent::__construct($model, new CompanyJobForm($model), $table, 'company.create', 'country.index', 'post.index');
+        parent::__construct($model, new CompanyJobForm($model), $table, 'company.create', 'company.index', 'post.index');
     }
 
     public function show(string $id)
