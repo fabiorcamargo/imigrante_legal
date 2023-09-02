@@ -25,7 +25,7 @@ return [
     'auto_canonical_link' => true,
 
     'open_graph' => [
-        'auto_fill' => false,
+        'auto_fill' => true,
         'image'     => null,
         'site_name' => null,
         'title'     => null,
@@ -34,7 +34,7 @@ return [
     ],
 
     'twitter' => [
-        'auto_fill'   => false,
+        'auto_fill'   => true,
         'card'        => null, // 'summary_large_image',
         'description' => null,
         'image'       => null,
