@@ -54,7 +54,7 @@ class CompanyForm extends Controller
                 ->maxSize("1mb")
                 ->preview(),
             Input::make('nome')->required()->label('Nome da Empresa')->help('Nome do Curso (Pode ser Cursos Profissionalizantes, Informática, Idiomas, Técnicos, entre outros).')->placeholder('Ex. Informática Básica'),
-            Wysiwyg::make('sobre')->label('Sobre'),
+            Textarea::make('sobre')->label('Sobre')->autosize(),
             Submit::make()->label($submit),
             
             ])
