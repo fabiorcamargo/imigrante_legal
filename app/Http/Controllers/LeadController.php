@@ -59,7 +59,7 @@ class LeadController extends Controller
         
         $data = $request->validate($this->model->rules());
 
-        $data['telefone'] = preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
+        $data['telefone'] = "55" .   preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
         //dd($data);
         $response = $this->model->create($data);
