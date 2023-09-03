@@ -68,7 +68,7 @@ class LeadController extends Controller
         $event = $fb->lead($request, $data['email'], $data['telefone']);
     
         //dd($event);
-        Toast::title('Criado com sucesso!')->autoDismiss(5);
+        Toast::title('Cadastro realizado com sucesso!')->autoDismiss(5);
 
         return redirect()->route('welcome', compact('event'));
     }

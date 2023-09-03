@@ -58,7 +58,7 @@ class FacebookApi extends Controller
                 $params = [
                     'access_token' => $access_token,
                     'data' => json_encode($event_data),
-                    //'test_event_code' => 'TEST68915'
+                    //'test_event_code' => 'TEST7840'
                 ];
 
                 // Fazer a solicitação POST usando o Laravel HTTP Client

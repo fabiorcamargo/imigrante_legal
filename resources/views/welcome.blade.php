@@ -34,7 +34,18 @@
     </section>
 
   </x-splade-lazy>
-
+  <dialog id="my_modal_1" class="modal" open >
+    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    <form method="dialog" class="modal-box">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <h3 class="font-bold text-lg">Parabéns!</h3>
+      <p class="py-4">Cadastro realizado com sucesso, em breve um dos nossos representantes entrará em contato, enquanto isso explore o site e compartilhe com seus amigos.</p>
+      <div class="modal-action">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Fechar</button>
+      </div>
+    </form>
+  </dialog>
 
   @if((request()->input('event')) !== null)
   
