@@ -34,6 +34,10 @@
     </section>
 
   </x-splade-lazy>
+  
+
+  @if((request()->input('event')) !== null)
+  
   <dialog id="my_modal_1" class="modal" open >
     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     <form method="dialog" class="modal-box">
@@ -46,9 +50,6 @@
       </div>
     </form>
   </dialog>
-
-  @if((request()->input('event')) !== null)
-  
   
   <x-splade-script>
     {!!(request()->input('event'))!!}
