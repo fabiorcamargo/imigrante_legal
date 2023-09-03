@@ -71,12 +71,13 @@ class FacebookApi extends Controller
                     $response_data = $response->json();
                     // Processar a resposta, se necessário
                     // ...
+
+                    
                     return "fbq('track', 'Lead', {
                         'event_name': 'Lead',
                         'event_time': '$time',
                         'action_source': 'website',
                         'event_source_url': '$url',
-                        'eventID': '$eid',
                         'user_data':
                         {
                             'em':
@@ -91,8 +92,10 @@ class FacebookApi extends Controller
                             'client_ip_address': '$ip',
                             'client_user_agent': '$agent'
                         },
-                    }
+                    },{'eventID': '$eid'}
                 )";
+
+                
 
                     
                 } else {
