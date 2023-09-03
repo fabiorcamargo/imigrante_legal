@@ -9,17 +9,17 @@
           <x-authentication-card-logo />
             <x-splade-form action="{{route('lead.store')}}">
                 
-                <x-splade-input name="nome" label="Nome Completo" />
+                <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name"/>
                 
-                <x-splade-input name="telefone" id="telefone" label="Telefone" maxlength="15" />
+                <x-splade-input name="telefone" id="telefone" label="Telefone (Digite apenas os números)" maxlength="15" placeholder="Ex. (11) 99865-4321" autocomplete="tel"/>
 
-                <x-splade-input name="email" label="Email address" type="email"  />
+                <x-splade-input name="email" label="Email" placeholder="exemplo@gmail.com" type="email" autocomplete="email"/>
              
                 <x-splade-select name="state_id" :options="json_decode($states)" label="Estado" choices  />
 
                 <x-splade-select name="city_id" remote-url="`/api/cities/${form.state_id}`" option-label="title" option-value="id" choices label="Cidade"/>
 
-                <x-splade-input name="pais_interesse" label="País de Interesse" />
+                <x-splade-input name="pais_interesse" label="País de Interesse" placeholder="Ex. Estados Unidos, Inglaterra, etc..." />
              
                 <div class="form-control mt-6">
                     <x-splade-submit class="btn btn-block btn-primary">Cadastrar </x-splade-submit>
