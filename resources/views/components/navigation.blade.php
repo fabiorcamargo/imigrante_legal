@@ -30,14 +30,14 @@
 
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('code.create')" :active="request()->routeIs('code.create')">
-                            {{ __('Código') }}
+                        <x-nav-link :href="route('lead.index')" :active="request()->routeIs('lead.*')">
+                            {{ __('Leads') }}
                         </x-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('country.index')" :active="request()->routeIs('country.*')">
-                            {{ __('Empresas') }}
+                            {{ __('Países') }}
                         </x-nav-link>
                     </div>
 
@@ -46,12 +46,12 @@
                     
                     @php $resume = auth()->user()->resume()->first() @endphp
                     <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    {{--<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('curriculo', ['resume' => $resume])"
                             :active="request()->routeIs('resume.*')">
                             {{ __('Currículo') }}
                         </x-nav-link>
-                    </div>
+                    </div>--}}
         
 
                    
@@ -218,16 +218,24 @@
                 </x-responsive-nav-link>
             </div>
 
+            
+
+            @auth
+
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             </div>
 
-            @auth
-
+            <div class="pt-2 pb-3 space-y-1">
+                <x-responsive-nav-link :href="route('lead.index')" :active="request()->routeIs('lead.*')">
+                    {{ __('Lead') }}
+                </x-responsive-nav-link>
+            </div>
 
             @if(auth()->user()->resume() == null)
+            
                         @php $resume = auth()->user()->resume()->first() @endphp
 
             <!-- Navigation Links -->

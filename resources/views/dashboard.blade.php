@@ -4,7 +4,7 @@
 
   <x-panel>   
 
-    @if(!isset(auth()->user()->resume()->first()->id))
+   {{--}} @if(!isset(auth()->user()->resume()->first()->id))
     <div class="alert alert-info">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -15,7 +15,7 @@
         <a href="{{route('curriculo')}}" class="btn btn-sm btn-primary">Criar</a>
       </div>
     </div>
-    @endif
+    @endif--}}
     
 
     <!-- component -->
@@ -24,7 +24,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 md:gap-2 pt-10">
 
-      <div class="col-span-1 p-2">
+      {{--<div class="col-span-1 p-2">
         <div class="card w-auto h-auto border bg-base-100 shadow-sm ">
           <div class="card-body">
 
@@ -54,7 +54,7 @@
                   <div class="flex flex-wrap justify-center">
                       <div class="w-full px-4">
                           <p class="font-light leading-relaxed text-slate-600 mb-4">{{$resume->objetivo}}</p>
-                          {{--<a href="javascript:;" class="font-normal text-slate-700 hover:text-slate-400">Ver Currículo</a>--}}
+                          {{--<a href="javascript:;" class="font-normal text-slate-700 hover:text-slate-400">Ver Currículo</a>
                       </div>
                   </div>
               </div>
@@ -96,7 +96,7 @@
 
           </div>
         </div>
-      </div>
+      </div>--}}
       <div class="col-span-2 p-2">
         <div class="card w-auto h-auto border bg-base-100 shadow-sm">
           <div class="card-body">

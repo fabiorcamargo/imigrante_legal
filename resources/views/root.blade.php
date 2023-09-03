@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
 
+
     <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
@@ -26,6 +27,16 @@
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=167867373000120&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
+
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C72LWK11J5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-C72LWK11J5');
+        </script>
 
     @spladeHead
     @vite('resources/js/app.js')
