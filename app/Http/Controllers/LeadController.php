@@ -59,8 +59,9 @@ class LeadController extends Controller
         
         $data = $request->validate($this->model->rules());
 
-        //dd($data);
+        $data['telefone'] = preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
+        //dd($data);
         $response = $this->model->create($data);
 
         $fb = new FacebookApi();
