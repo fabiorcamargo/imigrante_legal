@@ -36,7 +36,7 @@ class CompanyJobForm extends Controller
         $data == [] ? $submit = 'Criar' : $submit = 'Salvar';
         $data == [] ? $viagem = 1 : $viagem = $data->viagem;
         $data == [] ? $mudanca = 1 : $mudanca = $data->mudanca;
-        $data == [] ? $data['company_id'] = (request()->input('company')) : $data->company;
+        $data == [] ? $data['company_id'] = (request()->input('country')) : $data->company;
 
         $tipo = [
             "Estágio" => "Estágio",
