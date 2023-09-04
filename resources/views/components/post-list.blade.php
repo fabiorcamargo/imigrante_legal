@@ -41,10 +41,30 @@
                             <div
                                 class="relative p-4 md:rounded-r-2xl transition duration-500 group-hover:scale-105 text-gray-800 hover:text-indigo-600 ">
                                 <!-- component -->
+                                @php
+                                $imagem_3x = Image::make($jobs->logo)->resize(630, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                                $imagem_2x = Image::make($jobs->logo)->resize(428, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                                $imagem = Image::make($jobs->logo)->resize(268, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                                @endphp
+
+                                
                                 <div class="flex justify-center -mt-16">
-                                    <img class="w-100 h-100 object-cover rounded-md  "
-                                        src="{{$jobs->logo !== null ? asset($jobs->logo) : asset('/storage/assets/img/logo.svg')}}"
-                                        alt="{{$jobs->nome}}">
+                                    <picture>
+                                        <!-- Versão para telas de alta resolução -->
+                                        <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem_3x->encode('webp')) }}" media="(min-width: 1200px)">
+                                        <!-- Versão para telas de média resolução -->
+                                        <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem_2x->encode('webp')) }}" media="(min-width: 768px)">
+                                        <!-- Versão para telas menores (padrão) -->
+                                        <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem->encode('webp')) }}" alt="Descrição da imagem">
+                                    </picture>
+
+                                   
                                 </div>
                                 <div class="text-sm leading-5 pt-2 font-medium text-center">
                                     <div class="">
