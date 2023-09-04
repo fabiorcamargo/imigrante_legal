@@ -71,6 +71,7 @@ class BaseController extends Controller
 
         if (isset($data['photo'])) {
             HandleSpladeFileUploads::forRequest($request, 'photo');
+
             $path = $request->file('photo')->store('avatar/' . auth()->user()->id);
             $data['photo'] = $path;
         }

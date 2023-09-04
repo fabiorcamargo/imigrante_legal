@@ -21,7 +21,7 @@
                                 <div class="w-full flex justify-center">
                                     <div class="relative">
 
-                                        <img class="object-cover rounded-md h-full w-full  md:h-80 md:w-auto"
+                                        <img class="object-cover rounded-md h-full w-full  sm:h-80 sm:w-auto  md:h-80 md:w-auto"
                                         src="{{$data->logo !== null ? asset($data->logo) : asset('/storage/assets/img/logo.svg')}}"
                                         alt="{{$data->nome}}">
                                        

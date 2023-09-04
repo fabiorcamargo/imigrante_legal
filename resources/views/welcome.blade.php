@@ -1,6 +1,6 @@
 @seoTitle('Imigrante Legal')
 @seoDescription('O portal para quem sonha em morar no exterior!')
-@seoKeywords('exterior, trabalho, emprego, estados unidos, inglaterra, portugal, morar fora, morar no exterior')
+@seoKeywords('exterior, morar fora, imigrante legal')
 
 <x-app-layout>
 
@@ -32,6 +32,8 @@
     <section id="cadastro">
     <x-cadastro states="{!!$states!!}"/>
     </section>
+    <x-post2-list />
+
 
   </x-splade-lazy>
   

@@ -3,11 +3,11 @@
         <div class="text-center pb-10">
             <div class="inline-flex items-center">
                 <h2 class="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
-                    {{env('POST_SLOGAN')}}
+                    Posts em Destaque
                 </h2>
             </div>
             <p class="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
-                Conheça um pouco mais sobre os principais destinos dos Brasileiros:
+                {{env('POST_DESC')}}
             </p>
         </div>
 
@@ -32,7 +32,7 @@
             <div class="mx-auto max-w-2xl px-4 pt-10 pb-5 sm:px-6 sm:pt-24 sm:pb-12 lg:max-w-7xl lg:px-8">
                 <div class="grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
-                    @foreach (App\Models\Company::all() as $jobs)
+                    @foreach (App\Models\CompanyJob::orderBy('created_at', 'desc')->get() as $jobs)
                     <div class="group relative">
                         <a href="/country/{{$jobs->id}}">
                             <div aria-hidden="true"
@@ -41,42 +41,24 @@
                             <div
                                 class="relative p-4 md:rounded-r-2xl transition duration-500 group-hover:scale-105 text-gray-800 hover:text-indigo-600 ">
                                 <!-- component -->
-                                @php
-                                $imagem_3x = Image::make($jobs->logo)->resize(630, null, function ($constraint) {
-                                    $constraint->aspectRatio();
-                                });
-                                $imagem_2x = Image::make($jobs->logo)->resize(428, null, function ($constraint) {
-                                    $constraint->aspectRatio();
-                                });
-                                $imagem = Image::make($jobs->logo)->resize(268, null, function ($constraint) {
-                                    $constraint->aspectRatio();
-                                });
-                                @endphp
-
-                                
                                 <div class="flex justify-center -mt-16">
-                                    <picture>
-                                        <!-- Versão para telas de alta resolução -->
-                                        <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem_3x->encode('webp')) }}" media="(min-width: 1200px)">
-                                        <!-- Versão para telas de média resolução -->
-                                        <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem_2x->encode('webp')) }}" media="(min-width: 768px)">
-                                        <!-- Versão para telas menores (padrão) -->
-                                        <img src="{{ 'data:image/jpeg;base64,' . base64_encode($imagem->encode('webp')) }}" alt="Descrição da imagem">
-                                    </picture>
-
-                                   
+                                    
+                                    <img class="w-100 h-100 object-cover rounded-md  "
+                                        src="{{$jobs->post_img !== null ? asset($jobs->post_img) : asset('/storage/assets/img/logo.svg')}}"
+                                        alt="{{$jobs->nome}}">
                                 </div>
-                                <div class="text-sm leading-5 pt-2 font-medium text-center">
+                                
+                                
+                                <div class="text-sm leading-5 pt-2 font-medium text-right ">
                                     <div class="">
-
+                                        <div class="badge badge-secondary mt-4">{{$jobs->status}}</div>
                                     </div>
                                 </div>
                                 <div>
                                     <h2 class="text-gray-800 pt-4 text-xl font-semibold text-center">
                                         {{($jobs->nome)}}</h2>
-                                    <p class="mt-2 text-gray-600 text-center">{{($jobs->nome)}}</p>
+                                    <p class="mt-2 text-gray-600 text-center">{{($jobs->descricao)}}</p>
                                 </div>
-
                             </div>
                         </a>
                     </div>

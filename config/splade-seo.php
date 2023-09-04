@@ -15,7 +15,7 @@ return [
     'defaults' => [
         'title'       => env('APP_NAME', 'Laravel Splade'),
         'description' => 'O portal para quem sonha em morar no exterior!',
-        'keywords'    => ['exterior, trabalho, emprego, estados unidos, inglaterra, portugal, morar fora, morar no exterior'],
+        'keywords'    => ['exterior, morar fora, imigrante legal'],
     ],
 
     'title_prefix'    => '',
