@@ -41,6 +41,23 @@
                             <div
                                 class="relative p-4 md:rounded-r-2xl transition duration-500 group-hover:scale-105 text-gray-800 hover:text-indigo-600 ">
                                 <!-- component -->
+
+                                 @if((request()->input('test')) !== null)
+                                @php
+                                $imagem = Image::make($jobs->logo)->resize(268, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                                @endphp
+
+                                <picture>
+                                    <!-- Versão para telas de alta resolução -->
+                                    <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem->encode('webp')) }}" media="(min-width: 1200px)">
+                                    <!-- Versão para telas de média resolução -->
+                                    <source srcset="{{ 'data:image/jpeg;base64,' . base64_encode($imagem->encode('webp')) }}" media="(min-width: 768px)">
+                                    <!-- Versão para telas menores (padrão) -->
+                                    <img src="{{ 'data:image/jpeg;base64,' . base64_encode($imagem->encode('webp')) }}" alt="Descrição da imagem">
+                                </picture>
+                                @endif
                                 <div class="flex justify-center -mt-16">
                                     <img class="w-100 h-100 object-cover rounded-md  "
                                         src="{{$jobs->logo !== null ? asset($jobs->logo) : asset('/storage/assets/img/logo.svg')}}"
