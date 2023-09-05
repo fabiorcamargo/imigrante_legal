@@ -61,13 +61,6 @@ Route::middleware(['splade'])->group(function () {
         
 
         $states = States::pluck('title','id');
-
-        SEO::openGraphType('WebPage');
-        SEO::openGraphSiteName(env('APP_NAME'));
-        SEO::openGraphTitle(env('APP_NAME'));
-        SEO::openGraphUrl(env('APP_URL'));
-        SEO::openGraphImage(asset('/logo-800x800.png'));
-        SEO::description('O portal para quem sonha em morar no exterior! Aqui você vai encontrar dicas dos melhores países e indicações de progamas para quem deseja morar fora.');
         
         $config_site = json_decode(ConfigSite::find(1)->body);
 

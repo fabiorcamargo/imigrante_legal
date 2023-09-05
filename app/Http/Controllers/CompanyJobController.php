@@ -26,12 +26,6 @@ class CompanyJobController extends BaseController
         $data = $this->model::find($id);
         //dd($data->descricao);
         //dd($data);
-        SEO::openGraphType('WebPage');
-        SEO::openGraphSiteName(env('APP_NAME'));
-        SEO::openGraphTitle(env('APP_NAME') . " | $data->nome" );
-        SEO::description("$data->descricao");
-        SEO::openGraphUrl(request()->url());
-        SEO::openGraphImage(asset($data->post_img));
 
         return view('company.job.show', [
             'data' => $data ]);

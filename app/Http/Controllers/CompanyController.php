@@ -26,15 +26,6 @@ class CompanyController extends BaseController
 
         $data = $this->model::find($id);
 
-        //dd($data);
-        SEO::openGraphType('WebPage');
-        SEO::openGraphSiteName(env('APP_NAME'));
-        SEO::openGraphTitle(env('APP_NAME') . " | $data->nome" );
-        SEO::description($data->sobre);
-        SEO::openGraphUrl(request()->url());
-        SEO::openGraphImage(asset($data->logo));
-
-
         return view('company.show', [
             'data' => $data ]);
     }
