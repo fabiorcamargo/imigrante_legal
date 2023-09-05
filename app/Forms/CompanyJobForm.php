@@ -53,8 +53,8 @@ class CompanyJobForm extends Controller
             ->fields([
             File::make('post_img')->label('Insira uma imagem')
             ->filepond() // Enables filepond
-            ->accept(['image/png', 'image/jpeg', 'image/jpg'])
-            ->maxSize("1mb")
+            ->accept(['image/png', 'image/jpeg', 'image/jpg', 'image/webp'])
+            ->maxSize("2mb")
             ->preview(),
             Input::make('company_id')->hidden(),
             Input::make('nome')->required()->label('Título do Post'),

@@ -42,10 +42,8 @@
                                 class="relative p-4 md:rounded-r-2xl transition duration-500 group-hover:scale-105 text-gray-800 hover:text-indigo-600 ">
                                 <!-- component -->
                                 <div class="flex justify-center -mt-16">
+                                    <x-img-responsive img="{{$jobs->post_img}}" alt="{{$jobs->nome}}" class="w-100 h-100 object-cover rounded-md"/>
                                     
-                                    <img class="w-100 h-100 object-cover rounded-md  "
-                                        src="{{$jobs->post_img !== null ? asset($jobs->post_img) : asset('/storage/assets/img/logo.svg')}}"
-                                        alt="{{$jobs->nome}}">
                                 </div>
                                 
                                 

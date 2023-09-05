@@ -20,10 +20,8 @@
                             <div class="flex flex-wrap justify-center">
                                 <div class="w-full flex justify-center">
                                     <div class="relative">
-
-                                        <img class="object-cover rounded-md h-full w-full  sm:h-80 sm:w-auto  md:h-80 md:w-auto"
-                                        src="{{$data->logo !== null ? asset($data->logo) : asset('/storage/assets/img/logo.svg')}}"
-                                        alt="{{$data->nome}}">
+                                        
+                                        <x-img-responsive img="{{$data->logo}}" alt="{{$data->nome}}" class="object-cover rounded-md h-full w-full  md:h-80 md:w-auto"/>
                                        
                                     </div>
                                 </div>
@@ -46,10 +44,11 @@
                                         {{--<a href="javascript:;"
                                             class="font-normal text-slate-700 hover:text-slate-400">Ver
                                             Currículo</a>--}}
-
-                                        <img class="object-cover rounded-md h-80 w-full"
+                                            
+                                            <x-img-responsive img="{{$data->banner}}" alt="{{$data->nome}}" class="object-cover rounded-md sm:h-80 w-full"/>
+                                        {{--<img class="object-cover rounded-md h-80 w-full"
                                             src="{{$data->banner !== null ? asset($data->banner) : 'https://brangels.global/wp-content/uploads/2022/11/depositphotos_27064101-stock-photo-modern-architecture-in-la-defense.webp'}}"
-                                            alt="{{$data->nome}}">
+                                            alt="{{$data->nome}}">--}}
 
 
                                     </div>
@@ -84,9 +83,8 @@
                                             class="relative p-4 md:rounded-r-2xl transition duration-500 group-hover:scale-105 text-gray-800 hover:text-indigo-600 ">
                                             <!-- component -->
                                             <div class="flex justify-center -mt-16">
-                                                <img class="w-100 h-100 object-cover rounded-md  "
-                                                    src="{{$jobs->post_img !== null ? asset($jobs->post_img) : asset('/storage/assets/img/logo.svg')}}"
-                                                    alt="{{$data->nome}}">
+                                                <x-img-responsive img="{{$jobs->post_img}}" alt="{{$jobs->nome}}" class="w-100 h-100 object-cover rounded-md"/>
+                                                
                                             </div>
                                             <div class="text-sm leading-5 pt-2 font-medium text-center">
                                                 <div class="">

@@ -49,8 +49,8 @@
     </div>
     
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-full">
-        <img src='{{asset("storage/assets/img/".env('BANNER1'))}}'
-            class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" alt="Imagem Jovens Trabalhando" />
+        <x-img-responsive img="{{$img}}" alt="{{env('APP_NAME')}}" class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"/>
+        
     </div>
 </div>
 

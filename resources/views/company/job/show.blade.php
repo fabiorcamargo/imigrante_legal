@@ -21,9 +21,8 @@
                       <div class="w-full flex justify-center">
                           <div class="relative">
                             <a href="{{route('country.show', ['country' => $data->getcompany()->first()->id])}}">
-                            <img class="object-cover rounded-md h-full w-full  md:h-80 md:w-auto"
-                                                    src="{{asset($data->getcompany()->first()->logo)}}"
-                                                    alt="{{$data->nome}}">
+                            <x-img-responsive img="{{asset($data->getcompany()->first()->logo)}}" alt="{{asset($data->getcompany()->first()->nome)}}" class="object-cover rounded-md h-full w-full  md:h-80 md:w-auto"/>
+                            
                                                   </a>
                           </div>
                       </div>

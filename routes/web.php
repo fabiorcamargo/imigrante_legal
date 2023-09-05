@@ -7,6 +7,7 @@ use App\Http\Controllers\CursosController;
 use App\Http\Controllers\GetImageResume;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\Site_ConfigController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTrainingController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\WorksController;
 use App\Mail\welcome_mail;
 use App\Models\Company;
 use App\Models\CompanyJob;
+use App\Models\ConfigSite;
 use App\Models\States;
 use App\Models\User;
 use App\Models\UserCourse;
@@ -67,13 +69,16 @@ Route::middleware(['splade'])->group(function () {
         SEO::openGraphImage(asset('/logo-800x800.png'));
         SEO::description('O portal para quem sonha em morar no exterior! Aqui você vai encontrar dicas dos melhores países e indicações de progamas para quem deseja morar fora.');
         
+        $config_site = json_decode(ConfigSite::find(1)->body);
+
         //dd(json_encode($states));
         return view('welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'states' => $states
+            'states' => $states,
+            'config_site' => $config_site
         ]);
     })->name('welcome');
 
@@ -109,8 +114,7 @@ Route::middleware(['splade'])->group(function () {
 
         Route::resource('formacao', UserTrainingController::class);
 
-        
-        
+        Route::resource('site_config', Site_ConfigController::class);
        
 
         Route::get('/curriculo', [ResumeController::class, 'first'])->name('curriculo');

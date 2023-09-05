@@ -16,7 +16,7 @@ use ProtoneMedia\Splade\FormBuilder\Textarea;
 use ProtoneMedia\Splade\FormBuilder\Wysiwyg;
 use ProtoneMedia\Splade\SpladeForm;
 
-class CompanyForm extends Controller
+class ConfigForm extends Controller
 {
     public function __construct(Model $model)
     {
@@ -25,37 +25,18 @@ class CompanyForm extends Controller
 
     public function create($data){
 
-        //dd($data);
-        isset($data->logo) ? $data->logo = asset($data->logo) : '';
-        //dd($data->logo);
-        isset($data->banner) ? $data->banner = asset($data->banner) : '';
-
-        //dd($data->logo);
 
         $data == [] ? $submit = 'Criar' : $submit = 'Salvar';
-        $data == [] ? $viagem = 1 : $viagem = $data->viagem;
-        $data == [] ? $mudanca = 1 : $mudanca = $data->mudanca;
-
-        //dd($viagem);
-        $states = States::orderBy('title')->select('title', 'id')->get();
-        $cidades = City::orderBy('title')->select('title', 'id')->where('state_id', isset($data->state_id) ? $data->state_id : '')->get();
 
         
 
         $form = SpladeForm::make()
             ->fields([
-            File::make('logo')->label('Insira a Logo')
-            ->filepond() // Enables filepond
-            ->accept(['image/png', 'image/jpeg', 'image/jpg', 'image/webp'])
-            ->maxSize("2mb")
-            ->preview(),
-            File::make('banner')->label('Insira um Banner')
+                File::make('banner1')->label('Insira a imagem para o Banner 1')
                 ->filepond() // Enables filepond
                 ->accept(['image/png', 'image/jpeg', 'image/jpg', 'image/webp'])
                 ->maxSize("2mb")
                 ->preview(),
-            Input::make('nome')->required()->label('Nome da Empresa')->help('Nome do Curso (Pode ser Cursos Profissionalizantes, Informática, Idiomas, Técnicos, entre outros).')->placeholder('Ex. Informática Básica'),
-            Textarea::make('sobre')->label('Sobre')->autosize(),
             Submit::make()->label($submit),
             
             ])

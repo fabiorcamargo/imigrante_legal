@@ -16,6 +16,8 @@ use ProtoneMedia\Splade\FormBuilder\Number;
 use ProtoneMedia\Splade\FormBuilder\Submit;
 use ProtoneMedia\Splade\SpladeForm;
 use ProtoneMedia\Splade\SpladeTable;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class BaseController extends Controller
 {
@@ -35,9 +37,55 @@ class BaseController extends Controller
 
     public function rules()
     {
+        $this->rules = $this->model->rules();
 
-        return ($this->rules);
+        return $this->rules;
     }
+
+    public function imgV($imagemOriginal, $path, $name)
+        {
+            // Crie uma versão pequena da imagem (por exemplo, 300x200 pixels)
+            
+            $imagemPequena = Image::make($imagemOriginal)->resize(480, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            //dd($path);
+            $pathPequena = $path ."/x300". $name. ".webp";
+            
+            Storage::put($pathPequena, (string)$imagemPequena->encode('webp'));
+
+            // Crie uma versão média da imagem (por exemplo, 600x400 pixels)
+            $imagemMedia = Image::make($imagemOriginal)->resize(720, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $pathMedia = $path ."/x600". $name.".webp";
+            Storage::put($pathMedia, (string)$imagemMedia->encode('webp'));
+
+            // Crie uma versão grande da imagem (por exemplo, 1200x800 pixels)
+            $imagemGrande = Image::make($imagemOriginal)->resize(1200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $pathGrande = $path ."/x1200". $name.".webp";
+            Storage::put($pathGrande, (string)$imagemGrande->encode('webp'));
+
+            // Crie uma versão original da imagem (por exemplo, 1200x800 pixels)
+            $original = Image::make($imagemOriginal);
+            $pathoriginal = $path ."/". $name.".webp";
+            Storage::put($pathoriginal, (string)$original->encode('webp'));
+
+            return $pathoriginal;
+        }
+
+        public function del_imgV($img)
+        {
+            $directory = pathinfo($img, PATHINFO_DIRNAME);
+            $nomeDoArquivo = basename($img);
+
+            Storage::delete("$directory/x300$nomeDoArquivo");
+            Storage::delete("$directory/x600$nomeDoArquivo");
+            Storage::delete("$directory/x1200$nomeDoArquivo");
+            
+        }
 
 
     public function index()
@@ -90,25 +138,23 @@ class BaseController extends Controller
 
         if (isset($data['logo'])) {
             HandleSpladeFileUploads::forRequest($request, 'logo');
-            $path = $request->file('logo')->storeAs('company_img/' . $response->id, $data['nome'] . '-logo.jpg');
-
-            $response->logo = $path;
+            $logo = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, $data['nome']."logo"));
+            $response->logo = $logo;
             $response->save();
         }
 
         if (isset($data['banner'])) {
             HandleSpladeFileUploads::forRequest($request, 'banner');
-            $path = $request->file('banner')->storeAs('company_img/' . $response->id, $data['nome'] . '-banner.jpg');
-
-            $response->banner = $path;
+            $banner = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, $data['nome']."banner"));
+            $response->banner = $banner;
             $response->save();
         }
 
         if (isset($data['post_img'])) {
             HandleSpladeFileUploads::forRequest($request, 'post_img');
-            $path = $request->file('post_img')->storeAs('post_img/' . $response->id, $data['nome'] . '-post_img.jpg');
 
-            $response->post_img = $path;
+            $post_img = ($this->imgV($request->file('post_img'), 'company_img/' . $response->id, $data['nome']."post_img"));
+            $response->post_img = $post_img;
             $response->save();
         }
 
@@ -153,26 +199,25 @@ class BaseController extends Controller
         if (isset($data['logo'])) {
             HandleSpladeFileUploads::forRequest($request, 'logo');
 
-            $up->logo !== null ? Storage::delete($up->logo) : '';
-
-            $path = $request->file('logo')->storeAs('company_img/' . $id, $data['nome'] . '-logo.jpg');
+            $up->logo !== null ? $this->del_imgV($up->logo) : '';
+            $path = ($this->imgV($request->file('logo'), 'company_img/' . $up->id, $data['nome']."logo"));
             $data['logo'] = $path;
         }
 
         if (isset($data['banner'])) {
             HandleSpladeFileUploads::forRequest($request, 'banner');
 
-            $up->banner !== null ? Storage::delete($up->banner) : '';
+            $up->banner !== null ? $this->del_imgV($up->banner) : '';
+            $path = ($this->imgV($request->file('banner'), 'company_img/' . $up->id, $data['nome']."banner"));
 
-            $path = $request->file('banner')->storeAs('company_img/' . $id, $data['nome'] . '-banner.jpg');
             $data['banner'] = $path;
         }
 
         if (isset($data['post_img'])) {
             HandleSpladeFileUploads::forRequest($request, 'post_img');
 
-            $up->post_img !== null ? Storage::delete($up->post_img) : '';
-            $path = $request->file('post_img')->storeAs('post_img/' . $id, $data['nome'] . '-post_img.jpg');
+            $up->post_img !== null ? $this->del_imgV($up->post_img) : '';
+            $path = ($this->imgV($request->file('post_img'), 'company_img/' . $up->id, $data['nome']."post_img"));
 
             $data['post_img'] = $path;
         }

@@ -62,7 +62,7 @@ class ResumeForm extends Controller
             ->fields([
                 File::make('photo')->label('Insira uma Foto')
                     ->filepond((['imageCropAspectRatio' => '1:1'])) // Enables filepond
-                    ->accept(['image/png', 'image/jpeg'])
+                    ->accept(['image/png', 'image/jpeg', 'image/webp'])
                     ->preview()
                     
                 

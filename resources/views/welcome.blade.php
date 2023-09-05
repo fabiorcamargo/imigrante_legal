@@ -5,7 +5,7 @@
 <x-app-layout>
 
 
-    <x-splade-lazy>
+    {{--<x-splade-lazy>
         <x-slot:placeholder> 
           
           <div class="py-8">
@@ -25,9 +25,11 @@
               </div>
             </div>
         </div>
-           </x-slot:placeholder>
-           
-    <x-banner1 />
+           </x-slot:placeholder>--}}
+
+    
+    
+    <x-banner1 img="{{$config_site->banner1}}"/>
     <x-post-list />
     <section id="cadastro">
     <x-cadastro states="{!!$states!!}"/>
@@ -35,7 +37,7 @@
     <x-post2-list />
 
 
-  </x-splade-lazy>
+  {{--</x-splade-lazy>--}}
   
 
   @if((request()->input('event')) !== null)
