@@ -32,7 +32,7 @@
             <div class="mx-auto max-w-2xl px-4 pt-10 pb-5 sm:px-6 sm:pt-24 sm:pb-12 lg:max-w-7xl lg:px-8">
                 <div class="grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     <x-splade-lazy>
-                    @foreach (App\Models\CompanyJob::orderBy('created_at', 'desc')->get() as $jobs)
+                    @foreach (Splade::onLazy(App\Models\CompanyJob::orderBy('created_at', 'desc')->get()) as $jobs)
                     <div class="group relative">
                         <a href="/country/{{$jobs->id}}">
                             <div aria-hidden="true"
