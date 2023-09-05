@@ -138,14 +138,14 @@ class BaseController extends Controller
 
         if (isset($data['logo'])) {
             HandleSpladeFileUploads::forRequest($request, 'logo');
-            $logo = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, $data['nome']."logo"));
+            $logo = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, str_replace(" ","",$data['nome']."logo")));
             $response->logo = $logo;
             $response->save();
         }
 
         if (isset($data['banner'])) {
             HandleSpladeFileUploads::forRequest($request, 'banner');
-            $banner = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, $data['nome']."banner"));
+            $banner = ($this->imgV($request->file('logo'), 'company_img/' . $response->id, str_replace(" ","",$data['nome']."banner")));
             $response->banner = $banner;
             $response->save();
         }
@@ -153,7 +153,7 @@ class BaseController extends Controller
         if (isset($data['post_img'])) {
             HandleSpladeFileUploads::forRequest($request, 'post_img');
 
-            $post_img = ($this->imgV($request->file('post_img'), 'company_img/' . $response->id, $data['nome']."post_img"));
+            $post_img = ($this->imgV($request->file('post_img'), 'company_img/' . $response->id, str_replace(" ","",$data['nome']."post_img")));
             $response->post_img = $post_img;
             $response->save();
         }
@@ -200,7 +200,7 @@ class BaseController extends Controller
             HandleSpladeFileUploads::forRequest($request, 'logo');
 
             $up->logo !== null ? $this->del_imgV($up->logo) : '';
-            $path = ($this->imgV($request->file('logo'), 'company_img/' . $up->id, $data['nome']."logo"));
+            $path = ($this->imgV($request->file('logo'), 'company_img/' . $up->id, str_replace(" ", "", $data['nome']."logo")));
             $data['logo'] = $path;
         }
 
@@ -208,7 +208,7 @@ class BaseController extends Controller
             HandleSpladeFileUploads::forRequest($request, 'banner');
 
             $up->banner !== null ? $this->del_imgV($up->banner) : '';
-            $path = ($this->imgV($request->file('banner'), 'company_img/' . $up->id, $data['nome']."banner"));
+            $path = ($this->imgV($request->file('banner'), 'company_img/' . $up->id, str_replace(" ", "", $data['nome']."banner")));
 
             $data['banner'] = $path;
         }
@@ -217,7 +217,7 @@ class BaseController extends Controller
             HandleSpladeFileUploads::forRequest($request, 'post_img');
 
             $up->post_img !== null ? $this->del_imgV($up->post_img) : '';
-            $path = ($this->imgV($request->file('post_img'), 'company_img/' . $up->id, $data['nome']."post_img"));
+            $path = ($this->imgV($request->file('post_img'), 'company_img/' . $up->id, str_replace(" ", "", $data['nome']."post_img")));
 
             $data['post_img'] = $path;
         }

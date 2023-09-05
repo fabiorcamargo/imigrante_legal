@@ -43,7 +43,6 @@
                                 <!-- component -->
                                 <div class="flex justify-center -mt-16">
                                     <x-img-responsive img="{{$jobs->post_img}}" alt="{{$jobs->nome}}" class="w-100 h-100 object-cover rounded-md"/>
-                                    
                                 </div>
                                 
                                 
