@@ -62,7 +62,7 @@ Route::middleware(['splade'])->group(function () {
 
         $states = States::pluck('title','id');
         
-        $config_site = json_decode(ConfigSite::find(1)->body);
+        //$config_site = json_decode(ConfigSite::find(1)->body);
 
         //dd(json_encode($states));
         return view('welcome', [
