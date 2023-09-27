@@ -19,9 +19,5 @@ class SiteConfigSeed extends Seeder
             "banner1": "storage/assets/img/banners/banner1.webp"
         }',
         ]);
-<<<<<<< HEAD
-        
-=======
->>>>>>> 885bbc1b80592f14dd0ea5a3dfc84d82de814a26
     }
 }

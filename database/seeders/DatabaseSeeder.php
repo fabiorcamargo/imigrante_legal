@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             CodePremiumSeed::class,
             Roles::class,
             UserSeeder::class,
-            
+            SiteConfigSeed::class,
             RoleAssing::class,
 
         ]);
