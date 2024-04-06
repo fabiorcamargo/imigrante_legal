@@ -34,7 +34,7 @@
                     <x-splade-lazy>
                     @foreach (Splade::onLazy(App\Models\CompanyJob::orderBy('created_at', 'desc')->get()) as $jobs)
                     <div class="group relative">
-                        <a href="/country/{{$jobs->id}}">
+                        <a href="/post/{{$jobs->id}}">
                             <div aria-hidden="true"
                                 class="absolute top-0 w-full h-full rounded-2xl bg-white drop-shadow-lg border-2 border-gray-100/75  transition duration-500 group-hover:scale-105">
                             </div>

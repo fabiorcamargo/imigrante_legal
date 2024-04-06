@@ -4,6 +4,8 @@
         <h1 class="text-5xl font-bold">Cadastre-se Agora!</h1>
         <p class="py-6">Cadastre-se para participar do Programa Imigrante Legal, conheça todos os processos envolvidos para realizar o sonho de morar em outro País.</p>
       </div>
+
+
       <div class="card flex-shrink-0 w-full max-w-sm shadow-md  bg-base-100">
         <div class="card-body">
           <x-authentication-card-logo />

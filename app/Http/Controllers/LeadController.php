@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\MauticForm;
+use App\Models\City;
 use App\Models\Lead;
+use App\Models\States;
 use App\Tables\LeadTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Normalizer;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class LeadController extends Controller
@@ -57,12 +62,43 @@ class LeadController extends Controller
     {
 
         
+
         $data = $request->validate($this->model->rules());
 
         $data['telefone'] = "55" .   preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
         //dd($data);
+
+        //dd(City::find($data['city_id'])->title);
+        $state = (States::find($data['state_id'])->title);
+
+        // Normaliza a string para remover acentos
+        $normalizedString = Normalizer::normalize($state, Normalizer::FORM_D);
+
+        // Remove todos os caracteres que não sejam letras ou números
+        $estado = preg_replace('/[^a-zA-Z0-9]/', '', $normalizedString);
+
+        
         $response = $this->model->create($data);
+
+
+        $mauticForm = [
+            "mauticform" => 
+            [
+            "nome" => $data['nome'],
+            "email" => $data['email'],
+            "telefone1" => $data['telefone'],
+            "estado" => $estado,
+            "cidade" => City::find($data['city_id'])->title,
+            "pais_interesse" => $data['pais_interesse'],
+            "submit" => "1",
+            "formId" => "2",
+            "return" => null,
+            "formName" => "imigrantelegal"
+            ]
+        ];
+
+        dispatch(new MauticForm($mauticForm, $response));
 
         $fb = new FacebookApi();
         $event = $fb->lead($request, $data['email'], $data['telefone']);

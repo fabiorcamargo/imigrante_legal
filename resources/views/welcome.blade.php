@@ -42,18 +42,24 @@
 
   @if((request()->input('event')) !== null)
   
-  <dialog id="my_modal_1" class="modal" open >
-    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    <form method="dialog" class="modal-box">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-      <h3 class="font-bold text-lg">Parabéns!</h3>
-      <p class="py-4">Cadastro realizado com sucesso, em breve um dos nossos representantes entrará em contato, enquanto isso explore o site e compartilhe com seus amigos.</p>
-      <div class="modal-action">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Fechar</button>
-      </div>
-    </form>
-  </dialog>
+  <div class="flex items-center justify-center h-screen">
+    
+    <dialog id="my_modal_1" class="modal" open >
+      <a href="/" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</a>
+      <form method="dialog" class="modal-box">
+        <a href="/" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</a>
+        <h3 class="font-bold text-lg">Parabéns!</h3>
+        <h4 class="py-4">Te enviamos um email de confirmação! </h4>
+        <p class=""> <b> Verifique sua caixa de entrada</b>, caso tenha caido em spam clique em <b>NÃO É SPAN</b> para receber nossas atualizações.</p>
+        <div class="modal-action">
+          <!-- if there is a button in form, it will close the modal -->
+          <a href="/" class="btn">Fechar</a>
+        </div>
+      </form>
+    </dialog>
+    <!-- Fundo preto com opacidade -->
+    <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75 z-50"></div>
+  </div>
   
   <x-splade-script>
     {!!(request()->input('event'))!!}

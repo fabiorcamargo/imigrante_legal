@@ -44,4 +44,9 @@ class Lead extends Model
     public function getCampos() {
         return $this->fillable;
     }
+
+    public function Mautic()
+    {
+        return $this->hasMany(MauticForm::class);
+    }
 }
