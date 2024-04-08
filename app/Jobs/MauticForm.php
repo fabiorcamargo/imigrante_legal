@@ -23,8 +23,6 @@ class MauticForm implements ShouldQueue
     {
         $this->data = $data;
         $this->lead = $lead;
-
-        
     }
 
     /**
@@ -32,17 +30,18 @@ class MauticForm implements ShouldQueue
      */
     public function handle(): void
     {
-        
 
-        
+
+
 
         try {
 
             //$response = Http::post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
 
-            $response = Http::withHeaders([
-                'X-Forwarded-For' => request()->ip(), // Aqui estamos passando o IP original do cliente
-            ])->post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
+            $request = request();
+            $ip = $request->header('CF-Connecting-IP') ?? $request->header('X-Forwarded-For') ?? $request->ip();
+
+            $response = Http::post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', array_merge($this->data, ['ip' => $ip]));
 
             // Obtenha o corpo da resposta como uma string
             $responseBody = $response->getBody()->getContents();
@@ -85,7 +84,6 @@ class MauticForm implements ShouldQueue
                     'body' => '{"body": "não enviado"}',
                     'status' => $response->getStatusCode()
                 ]);
-
             }
         }
     }
