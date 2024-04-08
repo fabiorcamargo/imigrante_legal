@@ -38,7 +38,11 @@ class MauticForm implements ShouldQueue
 
         try {
 
-            $response = Http::post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
+            //$response = Http::post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
+
+            $response = Http::withHeaders([
+                'X-Forwarded-For' => request()->ip(), // Aqui estamos passando o IP original do cliente
+            ])->post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
 
             // Obtenha o corpo da resposta como uma string
             $responseBody = $response->getBody()->getContents();
