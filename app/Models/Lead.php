@@ -14,12 +14,11 @@ class Lead extends Model
         
         return [
             'nome' => ['required', 'string', 'max:150'],
-            'telefone' => ['required', 'string', 'max:150'],
+            'telefone' => ['required', 'string', 'min:10', 'max:15'],
             'email' => ['required', 'email', 'max:150'],
             'state_id' => ['required', 'string', 'max:150'],
             'city_id' => ['required', 'string', 'max:150'],
             'pais_interesse' => ['required', 'string', 'max:150'],
-    
     ];
 }
     protected $fillable =

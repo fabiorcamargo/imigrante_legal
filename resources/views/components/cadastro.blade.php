@@ -13,7 +13,7 @@
                 
                 <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name"/>
                 
-                <x-splade-input name="telefone" id="telefone" label="Telefone (Digite apenas os números)" maxlength="15" prepend="+55" placeholder="Ex. (11) 99865-4321" autocomplete="tel"/>
+                <x-splade-input name="telefone" id="telefone" label="Telefone (Digite apenas os números)" minlength="12" maxlength="15" prepend="+55" placeholder="Ex. (11) 99865-4321" autocomplete="tel"/>
 
                 <x-splade-input name="email" label="Email" placeholder="exemplo@gmail.com" type="email" autocomplete="email"/>
              

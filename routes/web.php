@@ -4,6 +4,7 @@ use App\Http\Controllers\CodePremiumController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CompanyJobController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\FacebookApi;
 use App\Http\Controllers\GetImageResume;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\ResumeController;
@@ -71,7 +72,7 @@ Route::middleware(['splade'])->group(function () {
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'states' => $states,
-            'config_site' => $config_site
+            'config_site' => $config_site      
         ]);
     })->name('welcome');
 

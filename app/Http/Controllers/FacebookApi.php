@@ -8,6 +8,120 @@ use Illuminate\Support\Str;
 
 class FacebookApi extends Controller
 {
+
+    protected $token;
+    protected $fbId;
+    protected $data;
+    protected $eventId;
+    protected $user_data;
+    protected $time;
+
+    protected $email;
+    protected $phone;
+
+    public function __construct()
+    {
+        $this->token = env('FB_TOKEN');
+        $this->fbId = env('FB_ID');
+        $this->eventId = (string)Str::uuid();
+        $this->time = time();
+    }
+
+
+    public function pre()
+    {
+        $request = Request::capture();
+        
+        if($request->cookie('_fbc') !== null){
+          $fbc = $request->cookie('_fbc');
+        }else if($request->input('fbclid') !== null){
+          $fbclid = $request->input('fbclid');
+          $fbc = "fb.2.$this->time.$fbclid";
+        }else{
+          $fbc='';
+        }
+
+        $userData = [
+            'client_ip_address' => request()->ip(),
+            'client_user_agent' => request()->header('User-Agent')
+        ];
+
+        if($this->email !== null){
+            $userData['em'] = [hash('sha256', $this->email)];
+        }
+        if($this->phone !== null){
+            $userData['ph'] = [hash('sha256', $this->phone)];
+        }
+        
+
+        // Adiciona _fbp se estiver disponível
+        if (isset($_COOKIE['_fbp'])) {
+            $userData['fbp'] = $_COOKIE['_fbp'];
+            $userData['fbc'] = $fbc;
+
+        }
+
+        $this->user_data = '"user_data": ' . json_encode($userData) . ',';
+
+        return $this->user_data;
+
+    }
+
+
+    public function fbScript(){
+        $event = (string)json_decode($this->data)->data[0]->event_name;
+
+        $script = "fbq('track', '".$event."',". json_encode(json_decode($this->data)->data[0]) .", {'eventID': '".$this->eventId."'})";
+
+        return str_replace('event_name', 'event', $script);
+    }
+
+    public function send()
+    {
+        try {
+            $response = Http::withToken($this->token)
+                ->withHeaders([
+                    'Content-Type' => 'application/json',
+                ])
+                ->post("https://graph.facebook.com/v18.0/{$this->fbId}/events", json_decode($this->data));
+            if ($response->successful()) {
+                $content = $response->json();
+
+                $content;
+
+                return $content;
+            } else {
+                $error_message = isset($response->json()['error']['message']) ? $response->json()['error']['message'] : 'Erro desconhecido';
+                throw new \Exception($error_message . ' (' . $response->status() . ')');
+            }
+        } catch (\Exception $e) {
+            //dd($e->getMessage());
+        }
+    }
+
+    public function lead2($email, $phone){
+
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->pre();
+
+        $this->data = '{
+            "data": [
+              {
+                ' . $this->user_data . '
+                "event_name": "Lead",
+                "event_time": ' . time() . ',
+                "action_source": "website",
+                "event_id":  "' . $this->eventId . '"
+              }
+              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
+          }';
+
+        $this->send();
+
+        return $this->fbScript();
+    
+    }
     
     
     public function lead(Request $request, $email, $phone){
@@ -30,7 +144,7 @@ class FacebookApi extends Controller
                 $access_token = env('FACEBOOK_API_TOKEN');
 
                 // Endpoint da API do Facebook para eventos
-                $api_url = 'https://graph.facebook.com/v15.0/167867373000120/events';
+                $api_url = 'https://graph.facebook.com/v15.0/'. env('FB_ID') .'/events';
                 
                 // Dados do evento que você deseja enviar
                 $event_data = [

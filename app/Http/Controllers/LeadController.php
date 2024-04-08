@@ -61,26 +61,22 @@ class LeadController extends Controller
     public function store(Request $request)
     {
 
-        
 
-        $data = $request->validate($this->model->rules());
+        $customMessages = [
+            'telefone.min' => 'Por favor insira o telefone com DDD e o 9 adicional conforme o exemplo (11) 9 98765-4321.'
+        ];
+
+        $data = $request->validate($this->model->rules(), $customMessages);
 
         $data['telefone'] = "55" .   preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
-        //dd($data);
-
-        //dd(City::find($data['city_id'])->title);
         $state = (States::find($data['state_id'])->title);
 
-        // Normaliza a string para remover acentos
         $normalizedString = Normalizer::normalize($state, Normalizer::FORM_D);
 
-        // Remove todos os caracteres que não sejam letras ou números
         $estado = preg_replace('/[^a-zA-Z0-9]/', '', $normalizedString);
-
         
         $response = $this->model->create($data);
-
 
         $mauticForm = [
             "mauticform" => 
@@ -101,9 +97,9 @@ class LeadController extends Controller
         dispatch(new MauticForm($mauticForm, $response));
 
         $fb = new FacebookApi();
-        $event = $fb->lead($request, $data['email'], $data['telefone']);
-    
-        //dd($event);
+
+        $event = $fb->lead2($data['email'], $data['telefone']);
+
         Toast::title('Cadastro realizado com sucesso!')->autoDismiss(5);
 
         return redirect()->route('welcome', compact('event'));
