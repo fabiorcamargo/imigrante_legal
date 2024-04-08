@@ -210,6 +210,12 @@ Route::middleware(['splade'])->group(function () {
         //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
         //new welcome_mail(auth()->user());
     } );
+
+
+    Route::get('/mautic', function () {
+        return redirect('/home/imigrantelegal/htdocs/imigrantelegal.com.br/mautic');
+    });
+
 });
 
 
