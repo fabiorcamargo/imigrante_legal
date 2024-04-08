@@ -211,11 +211,6 @@ Route::middleware(['splade'])->group(function () {
         //new welcome_mail(auth()->user());
     } );
 
-
-    Route::get('/mautic', function () {
-        return redirect('/home/imigrantelegal/htdocs/imigrantelegal.com.br/mautic');
-    });
-
 });
 
 
