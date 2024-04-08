@@ -123,11 +123,7 @@ Route::middleware(['splade'])->group(function () {
 
         Route::get('user/list', [UserController::class, 'list']);
 
-        Route::get('/mail/test', function(){
-
-            Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
-            //new welcome_mail(auth()->user());
-        } );
+        
 
 
 
@@ -207,6 +203,13 @@ Route::middleware(['splade'])->group(function () {
         return 'criado com sucesso';
 
     });
+
+    Route::get('/mail/test', function(){
+
+        return request()->ip();
+        //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
+        //new welcome_mail(auth()->user());
+    } );
 });
 
 
