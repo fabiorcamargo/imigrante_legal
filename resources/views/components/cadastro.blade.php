@@ -12,9 +12,9 @@
       <div class="card-body">
         <x-authentication-card-logo />
 
-        <iframe src="//imi.meusestudosead.com.br/form/1" width="300" height="300"><p>Your browser does not support iframes.</p></iframe>
+        <iframe src="//imi.meusestudosead.com.br/form/1" width="300" height="400"><p>Your browser does not support iframes.</p></iframe>
 
-        <x-splade-form action="{{route('lead.store')}}">
+        {{-- <x-splade-form action="{{route('lead.store')}}">
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />
 
@@ -36,7 +36,7 @@
             <x-splade-submit class="btn btn-block btn-primary">Cadastrar </x-splade-submit>
           </div>
 
-        </x-splade-form>
+        </x-splade-form> --}}
 
 
         <x-splade-script>
