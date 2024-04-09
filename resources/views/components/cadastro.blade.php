@@ -46,15 +46,6 @@
       
     </head>
 
-    <body>
-      <form>
-        <label for="numeroCelular">Número de Celular Brasileiro:</label><br>
-        <input type="text" id="numeroCelular" name="numeroCelular" placeholder="Digite o número"><br><br>
-        <input type="button" id="validarBotao" value="Validar">
-      </form>
-    </body>
-
-
     <div class="card flex-shrink-0 w-full max-w-sm shadow-md  bg-base-100">
       <div class="card-body">
         <x-authentication-card-logo />
@@ -65,7 +56,7 @@
           }
         </style>
         <div id="mauticform_wrapper_imigrante1" class="mauticform_wrapper">
-          <form autocomplete="false" role="form" method="post"
+          <form autocomplete="false" role="form" method="post" class="form"
             action="https://imi.meusestudosead.com.br/form/submit?formId=1" id="mauticform_imigrante1"
             data-mautic-form="imigrante1" enctype="multipart/form-data">
             <div class="mauticform-error" id="mauticform_imigrante1_error"></div>
@@ -124,7 +115,7 @@
         </div>
 
 
-        <x-splade-form action="{{route('lead.store')}}">
+        {{-- <x-splade-form action="{{route('lead.store')}}">
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />
 
@@ -147,12 +138,8 @@
             <x-splade-submit class="btn btn-block btn-primary">Cadastrar </x-splade-submit>
           </div>
 
-        </x-splade-form>
+        </x-splade-form> --}}
 
-
-        <script>
-
-        </script>
 
         {{-- <x-splade-script>
           const inputTelefone = document.getElementById('mauticform_input_imigrante1_telefone1');
