@@ -38,6 +38,8 @@
         gtag('config', 'G-C72LWK11J5');
         </script>
 
+        <script type="text/javascript" src="//imi.meusestudosead.com.br/form/generate.js?id=1"></script>
+
     @spladeHead
     @vite('resources/js/app.js')
 </head>
