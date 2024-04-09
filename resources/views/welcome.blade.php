@@ -68,6 +68,8 @@
   </x-splade-script>
 
   @endif
+
+  
  
 </x-app-layout>
 

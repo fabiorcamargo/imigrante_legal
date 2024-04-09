@@ -38,7 +38,29 @@
         gtag('config', 'G-C72LWK11J5');
         </script>
 
-        <script type="text/javascript" src="//imi.meusestudosead.com.br/form/generate.js?id=1"></script>
+<script type="text/javascript">
+    /** This section is only needed once per page if manually copying **/
+    if (typeof MauticSDKLoaded == 'undefined') {
+        var MauticSDKLoaded = true;
+        var head            = document.getElementsByTagName('head')[0];
+        var script          = document.createElement('script');
+        script.type         = 'text/javascript';
+        script.src          = 'https://imi.meusestudosead.com.br/media/js/mautic-form.js?vdce848bf';
+        script.onload       = function() {
+            MauticSDK.onLoad();
+        };
+        head.appendChild(script);
+        var MauticDomain = 'https://imi.meusestudosead.com.br';
+        var MauticLang   = {
+            'submittingMessage': "Por favor, aguarde..."
+        }
+    }else if (typeof MauticSDK != 'undefined') {
+        MauticSDK.onLoad();
+    }
+</script>
+
+
+        
 
     @spladeHead
     @vite('resources/js/app.js')
