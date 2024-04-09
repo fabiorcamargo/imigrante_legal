@@ -12,7 +12,7 @@
       <div class="card-body">
         <x-authentication-card-logo />
 
-        <iframe src="//crm.imigrantelegal.com.br/form/1" width="300" height="300"><p>Your browser does not support iframes.</p></iframe>
+        <iframe src="https://crm.imigrantelegal.com.br/form/1" width="300" height="300"><p>Your browser does not support iframes.</p></iframe>
 
         <x-splade-form action="{{route('lead.store')}}">
 
