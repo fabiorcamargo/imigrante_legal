@@ -1,4 +1,3 @@
-<script type="text/javascript" src="//mautic.imigrantelegal.com.br/form/generate.js?id=1"></script>
 
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
@@ -12,13 +11,6 @@
     <div class="card flex-shrink-0 w-full max-w-sm shadow-md  bg-base-100">
       <div class="card-body">
         <x-authentication-card-logo />
-
-        <iframe src="//mautic.imigrantelegal.com.br/form/1" width="300" height="300"><p>Your browser does not support iframes.</p></iframe>
-
-
-
-
-
 
         <x-splade-form action="{{route('lead.store')}}">
 
