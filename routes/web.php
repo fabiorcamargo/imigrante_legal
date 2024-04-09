@@ -204,8 +204,10 @@ Route::middleware(['splade'])->group(function () {
 
     });
 
-    Route::get('/mail/test', function(){
+    Route::get('/test', function(Request $request){
 
+        dd($request->all());
+ 
         return request()->ip();
         //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
         //new welcome_mail(auth()->user());

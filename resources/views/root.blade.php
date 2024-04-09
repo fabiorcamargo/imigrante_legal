@@ -11,7 +11,7 @@
 
 
 
-    <!-- Meta Pixel Code -->
+    {{-- <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -36,7 +36,7 @@
         gtag('js', new Date());
 
         gtag('config', 'G-C72LWK11J5');
-        </script>
+        </script> --}}
 
 <script type="text/javascript">
     /** This section is only needed once per page if manually copying **/
