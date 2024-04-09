@@ -18,7 +18,7 @@
         </style>
         <div id="mauticform_wrapper_imirante1" class="mauticform_wrapper">
           <form autocomplete="false" role="form" method="post"
-            action="http://mautic.imigrantelegal.com.br/form/submit?formId=1" id="mauticform_imirante1"
+            action="https://mautic.imigrantelegal.com.br/form/submit?formId=1" id="mauticform_imirante1"
             data-mautic-form="imirante1" enctype="multipart/form-data">
             <div class="mauticform-error" id="mauticform_imirante1_error"></div>
             <div class="mauticform-message" id="mauticform_imirante1_message"></div>
