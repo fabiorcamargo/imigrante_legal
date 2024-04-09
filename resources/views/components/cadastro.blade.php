@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  /** This section is only needed once per page if manually copying **/
+  if (typeof MauticSDKLoaded == 'undefined') {
+      var MauticSDKLoaded = true;
+      var head            = document.getElementsByTagName('head')[0];
+      var script          = document.createElement('script');
+      script.type         = 'text/javascript';
+      script.src          = 'https://mautic.imigrantelegal.com.br/media/js/mautic-form.js?v687b45f7';
+      script.onload       = function() {
+          MauticSDK.onLoad();
+      };
+      head.appendChild(script);
+      var MauticDomain = 'https://mautic.imigrantelegal.com.br';
+      var MauticLang   = {
+          'submittingMessage': "Por favor, aguarde..."
+      }
+  }else if (typeof MauticSDK != 'undefined') {
+      MauticSDK.onLoad();
+  }
+</script>
+
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
