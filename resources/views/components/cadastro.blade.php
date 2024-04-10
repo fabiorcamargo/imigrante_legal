@@ -9,7 +9,7 @@
 
     <head>
       <title>Validação de Número de Celular Brasileiro</title>
-      
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
         $(document).ready(function() {
@@ -110,11 +110,36 @@
             </div><input type="hidden" name="mauticform[formId]" id="mauticform_imigrante1_id" value="1">
             <input type="hidden" name="mauticform[return]" id="mauticform_imigrante1_return" value="">
             <input type="hidden" name="mauticform[formName]" id="mauticform_imigrante1_name" value="imigrante1">
-
           </form>
         </div>
 
-
+        <script>
+          // Função para enviar os dados do formulário para o zaraz.track
+          function enviarDadosParaZaraz() {
+            // Obter os valores dos campos do formulário
+            var nome = document.getElementById("mauticform_input_imigrante1_nome").value;
+            var sobrenome = document.getElementById("mauticform_input_imigrante1_sobrenome").value;
+            var email = document.getElementById("mauticform_input_imigrante1_email").value;
+            var telefone = document.getElementById("mauticform_input_imigrante1_telefone1").value;
+        
+            // Enviar os dados para o zaraz.track
+            zaraz.track("contactform", {
+              userId: 555,
+              formId: 372,
+              nome: nome,
+              sobrenome: sobrenome,
+              email: email,
+              telefone: telefone
+            });
+          }
+        
+          // Adicionar um evento de escuta para quando o formulário for enviado
+          document.getElementById("mauticform_imigrante1").addEventListener("submit", function(event) {
+            // Chamar a função para enviar os dados para o zaraz.track
+            enviarDadosParaZaraz();
+          });
+        </script>
+        
         {{-- <x-splade-form action="{{route('lead.store')}}">
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />
