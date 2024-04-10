@@ -137,7 +137,7 @@
             <x-splade-submit class="btn btn-block btn-primary">Cadastrar </x-splade-submit>
           </div>
 
-        </x-splade-form> --}}
+        </x-splade-form>
 
 
         {{-- <x-splade-script>
