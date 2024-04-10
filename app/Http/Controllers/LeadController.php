@@ -60,11 +60,16 @@ class LeadController extends Controller
 
     public function store(Request $request)
     {
+       
         $customMessages = [
             'telefone.min' => 'Por favor insira o telefone com DDD e o 9 adicional conforme o exemplo (11) 9 98765-4321.'
         ];
 
+        //dd($request->validate($this->model->rules(), $customMessages));
+
         $data = $request->validate($this->model->rules(), $customMessages);
+
+        
 
         $data['telefone'] = "55" .   preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
@@ -73,6 +78,8 @@ class LeadController extends Controller
         $normalizedString = Normalizer::normalize($state, Normalizer::FORM_D);
 
         $estado = preg_replace('/[^a-zA-Z0-9]/', '', $normalizedString);
+
+        
         
         $response = $this->model->create($data);
 
@@ -91,6 +98,8 @@ class LeadController extends Controller
             "formName" => "imigrantelegal"
             ]
         ];
+
+        
 
         dispatch(new MauticForm($mauticForm, $response));
 

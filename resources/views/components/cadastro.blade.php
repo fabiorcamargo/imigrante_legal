@@ -118,7 +118,7 @@
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />
 
-          <x-splade-input name="mauticform[telefone1]" value="" id="mauticform_input_imigrante1_telefone1"
+          <x-splade-input name="telefone" id="telefone"
             label="Telefone (Digite apenas os números)" minlength="12" maxlength="15" prepend="+55"
             placeholder="Ex. (11) 99865-4321" autocomplete="tel" />
 
@@ -141,7 +141,7 @@
 
 
         <x-splade-script>
-          const inputTelefone = document.getElementById('mauticform_input_imigrante1_telefone1');
+          const inputTelefone = document.getElementById('telefone');
 
           inputTelefone.addEventListener('input', function() {
           const value = this.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
