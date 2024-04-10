@@ -59,10 +59,10 @@ Route::middleware(['splade'])->group(function () {
     Route::spladeUploads();
 
     Route::get('/', function () {
-        
 
-        $states = States::pluck('title','id');
-        
+
+        $states = States::pluck('title', 'id');
+
         $config_site = json_decode(ConfigSite::find(1)->body);
 
         //dd(json_encode($states));
@@ -72,7 +72,7 @@ Route::middleware(['splade'])->group(function () {
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
             'states' => $states,
-            'config_site' => $config_site      
+            'config_site' => $config_site
         ]);
     })->name('welcome');
 
@@ -88,15 +88,14 @@ Route::middleware(['splade'])->group(function () {
         config('jetstream.auth_session'),
         'verified',
     ])->group(function () {
-        Route::get('/dashboard', function(){
-            
+        Route::get('/dashboard', function () {
+
             //$user = User::find(1);
             //dd((string)Str::uuid());
 
             //auth()->user()->givePermissionTo('admin');
             $resume = auth()->user()->resume()->first();
             return view('dashboard', ['resume' => $resume]);
-
         })->name('dashboard');
 
         //Rotas com base nos Models
@@ -109,111 +108,112 @@ Route::middleware(['splade'])->group(function () {
         Route::resource('formacao', UserTrainingController::class);
 
         Route::resource('site_config', Site_ConfigController::class);
-       
+
 
         Route::get('/curriculo', [ResumeController::class, 'first'])->name('curriculo');
-        
+
 
         //Rotas comuns
         Route::get('/code/create', [CodePremiumController::class, 'create'])->name('code.create');
         Route::post('/code/store', [CodePremiumController::class, 'store'])->name('code.store');
-        Route::get('/code', function(){
+        Route::get('/code', function () {
             return view('user.code');
         })->name('code.show');
 
         Route::get('user/list', [UserController::class, 'list']);
 
-        
 
 
 
-        Route::get('/pdf/{username}', function($username){
-            
 
-            if(isset(UserResume::where('username', $username)->first()->id)){
+        Route::get('/pdf/{username}', function ($username) {
+
+
+            if (isset(UserResume::where('username', $username)->first()->id)) {
                 $resume = UserResume::where('username', $username)->first();
                 $user = $resume->getuser()->first();
                 $works = UserWork::where('user_id', $resume->user_id)->get();
                 $courses = UserCourse::where('user_id', $resume->user_id)->get();
                 $pdf = Pdf::loadView('pdf.invoice', compact('resume', 'user', 'works', 'courses'))
 
-                ->setPaper('a4', 'portrait')
-                ->setOptions([
-                    
-                    'enable_remote' => true,
-                    'isRemoteEnabled' => true,
-                    'dpi' => '120'
-                ]);
+                    ->setPaper('a4', 'portrait')
+                    ->setOptions([
+
+                        'enable_remote' => true,
+                        'isRemoteEnabled' => true,
+                        'dpi' => '120'
+                    ]);
 
                 return $pdf->stream('invoice.pdf');
-                }else{
-                    Toast::title('Ops!')
+            } else {
+                Toast::title('Ops!')
                     ->message('Esse currículo não foi localizado')
                     ->warning()
                     ->leftTop()
                     ->backdrop()
                     ->autoDismiss(5);
-                    return back();
-                }
-            })->name('curriculo.pdf');
-        
+                return back();
+            }
+        })->name('curriculo.pdf');
     });
 
-    Route::get('/premium', function(){
+    Route::get('/premium', function () {
         return view('auth.premium');
     })->name('premium');
-    Route::post('/code/verify',[CodePremiumController::class, 'verify'])->name('code.verify');
+    Route::post('/code/verify', [CodePremiumController::class, 'verify'])->name('code.verify');
 
-    Route::get('/curriculo/{username}', function($username){
+    Route::get('/curriculo/{username}', function ($username) {
 
-        if(isset(UserResume::where('username', $username)->first()->id)){
-        $resume = UserResume::where('username', $username)->first();
-        $user = $resume->getuser()->first();
-        $works = UserWork::where('user_id', $resume->user_id)->get();
-        $courses = UserCourse::where('user_id', $resume->user_id)->get();
-        return view('resume.show.index', ['user' => $user, 'resume' => $resume, 'works' => $works, 'courses' => $courses]);
-        }else{
+        if (isset(UserResume::where('username', $username)->first()->id)) {
+            $resume = UserResume::where('username', $username)->first();
+            $user = $resume->getuser()->first();
+            $works = UserWork::where('user_id', $resume->user_id)->get();
+            $courses = UserCourse::where('user_id', $resume->user_id)->get();
+            return view('resume.show.index', ['user' => $user, 'resume' => $resume, 'works' => $works, 'courses' => $courses]);
+        } else {
             Toast::title('Ops!')
-            ->message('Esse currículo não foi localizado')
-            ->warning()
-            ->leftTop()
-            ->backdrop()
-            ->autoDismiss(5);
+                ->message('Esse currículo não foi localizado')
+                ->warning()
+                ->leftTop()
+                ->backdrop()
+                ->autoDismiss(5);
             return back();
         }
     })->name('curriculo.show');
 
-    
+
     Route::get('/sitemap', function () {
         $sitemap = Sitemap::create()
-        ->add(Url::create('/'));
+            ->add(Url::create('/'));
 
         $counties = Company::all();
-        foreach($counties as $country){
-            $sitemap->add(Url::create('country/'. $country->id));
+        foreach ($counties as $country) {
+            $sitemap->add(Url::create('country/' . $country->id));
         }
 
         $posts = CompanyJob::all();
-        foreach($posts as $post){
-            $sitemap->add(Url::create('post/'. $post->id));
+        foreach ($posts as $post) {
+            $sitemap->add(Url::create('post/' . $post->id));
         }
-        
+
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
         return 'criado com sucesso';
-
     });
 
-    Route::post('/test', function(Request $request){
+    Route::post('/test', function (Request $request) {
 
-        dd($request->all());
- 
-        return request()->ip();
+        $content = $request->getContent();
+
+        // Caminho para o arquivo de texto onde você quer salvar os dados
+        $filePath = storage_path('app/webhook-data.txt');
+
+        // Salva o conteúdo no arquivo de texto
+        file_put_contents($filePath, $content);
+
+        // Retorna uma resposta de sucesso
+        return response()->json(['message' => 'Dados salvos com sucesso!']);
         //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
         //new welcome_mail(auth()->user());
-    } );
-
+    });
 });
-
-
-
