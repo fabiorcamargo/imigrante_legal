@@ -113,33 +113,7 @@
           </form>
         </div>
 
-        <script>
-          // Função para enviar os dados do formulário para o zaraz.track
-          function enviarDadosParaZaraz() {
-            // Obter os valores dos campos do formulário
-            var nome = document.getElementById("mauticform_input_imigrante1_nome").value;
-            var sobrenome = document.getElementById("mauticform_input_imigrante1_sobrenome").value;
-            var email = document.getElementById("mauticform_input_imigrante1_email").value;
-            var telefone = document.getElementById("mauticform_input_imigrante1_telefone1").value;
-        
-            // Enviar os dados para o zaraz.track
-            zaraz.track("contactform", {
-              userId: 555,
-              formId: 372,
-              nome: nome,
-              sobrenome: sobrenome,
-              email: email,
-              telefone: telefone
-            });
-          }
-        
-          // Adicionar um evento de escuta para quando o formulário for enviado
-          document.getElementById("mauticform_imigrante1").addEventListener("submit", function(event) {
-            // Chamar a função para enviar os dados para o zaraz.track
-            enviarDadosParaZaraz();
-          });
-        </script>
-        
+
         {{-- <x-splade-form action="{{route('lead.store')}}">
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />

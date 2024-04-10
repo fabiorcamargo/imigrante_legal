@@ -204,7 +204,7 @@ Route::middleware(['splade'])->group(function () {
 
     });
 
-    Route::get('/test', function(Request $request){
+    Route::post('/test', function(Request $request){
 
         dd($request->all());
  
