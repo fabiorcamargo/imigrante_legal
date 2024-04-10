@@ -28,18 +28,36 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/test', function (Request $request) {
+Route::post('/form_send', function (Request $request) {
 
-    $content = $request->getContent();
+    $data = json_decode($request->getContent(), true);
 
-    // Caminho para o arquivo de texto onde você quer salvar os dados
-    $filePath = storage_path('app/webhook-data.txt');
+    //dd($data['mautic.form_on_submit'][0]['submission']['results']);
+    // Acesse o email
+    
+    $dados = [];
+    $dados['agent'] = $data['mautic.form_on_submit'][0]['submission']['results']['agent'];
+    $dados['fbid'] = $data['mautic.form_on_submit'][0]['submission']['trackingId'];
+    $dados['email'] = hash('sha256',$data['mautic.form_on_submit'][0]['submission']['results']['email']);
+    $dados['phone'] = $data['mautic.form_on_submit'][0]['submission']['results']['telefone1'];
+    $dados['fbp'] = $data['mautic.form_on_submit'][0]['submission']['results']['fbp'];
+    $dados['fbc'] = $data['mautic.form_on_submit'][0]['submission']['results']['fbc'];
+    $dados['cidade'] = hash('sha256',strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $data['mautic.form_on_submit'][0]['submission']['results']['cidade']))));
+    $dados['estado'] = hash('sha256',strtolower(str_replace(' ', '', iconv('UTF-8', 'ASCII//TRANSLIT', $data['mautic.form_on_submit'][0]['submission']['results']['estado']))));
+    $dados['ip'] = $data['mautic.form_on_submit'][0]['submission']['ipAddress']['ipAddress'];
+    $dados['url'] = $data['mautic.form_on_submit'][0]['submission']['referer'];
+    $dados['time'] = strtotime($data['mautic.form_on_submit'][0]['submission']['dateSubmitted']);
+    $dados['country'] = hash('sha256','br');
+    $dados['phone'] = hash('sha256', "55" .   preg_replace('/[^A-Za-z0-9]/', '', $dados['phone']));
 
-    // Salva o conteúdo no arquivo de texto
-    file_put_contents($filePath, $content);
 
-    // Retorna uma resposta de sucesso
-    return response()->json(['message' => 'Dados salvos com sucesso!']);
+ 
+
+    $fb = new FacebookApi;
+    $response = $fb->lead2($dados);
+
+
+    return $response;
     //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
     //new welcome_mail(auth()->user());
 });

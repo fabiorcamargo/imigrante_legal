@@ -83,25 +83,23 @@ class LeadController extends Controller
         
         $response = $this->model->create($data);
 
-        $mauticForm = [
-            "mauticform" => 
-            [
-            "nome" => $data['nome'],
-            "email" => $data['email'],
-            "telefone1" => $data['telefone'],
-            "estado" => $estado,
-            "cidade" => City::find($data['city_id'])->title,
-            "pais_interesse" => $data['pais_interesse'],
-            "submit" => "1",
-            "formId" => "2",
-            "return" => null,
-            "formName" => "imigrantelegal"
-            ]
-        ];
+        // $mauticForm = [
+        //     "mauticform" => 
+        //     [
+        //     "nome" => $data['nome'],
+        //     "sobrenome" => $data['nome'],
+        //     "email" => $data['email'],
+        //     "telefone1" => $data['telefone'],
+        //     "submit" => "1",
+        //     "formId" => "2",
+        //     "return" => null,
+        //     "formName" => "imigrante1"
+        //     ]
+        // ];
 
-        
+        // dd(Http::post('https://imi.meusestudosead.com.br/form/submit?formId=1', $mauticForm));
 
-        dispatch(new MauticForm($mauticForm, $response));
+        // dispatch(new MauticForm($mauticForm, $response));
 
         $fb = new FacebookApi();
 

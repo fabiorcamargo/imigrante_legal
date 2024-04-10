@@ -23,7 +23,7 @@ class FacebookApi extends Controller
     {
         $this->token = env('FB_TOKEN');
         $this->fbId = env('FB_ID');
-        $this->eventId = (string)Str::uuid();
+        //$this->eventId = (string)Str::uuid();
         $this->time = time();
     }
 
@@ -84,10 +84,12 @@ class FacebookApi extends Controller
                     'Content-Type' => 'application/json',
                 ])
                 ->post("https://graph.facebook.com/v18.0/{$this->fbId}/events", json_decode($this->data));
+
+                
             if ($response->successful()) {
                 $content = $response->json();
 
-                $content;
+                //dd($content);
 
                 return $content;
             } else {
@@ -99,27 +101,36 @@ class FacebookApi extends Controller
         }
     }
 
-    public function lead2($email, $phone){
-
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->pre();
+    public function lead2($dados){
 
         $this->data = '{
             "data": [
-              {
-                ' . $this->user_data . '
-                "event_name": "Lead",
-                "event_time": ' . time() . ',
-                "action_source": "website",
-                "event_id":  "' . $this->eventId . '"
-              }
-              ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
-          }';
+                {
+                    "event_name": "Lead",
+                    "event_time": '.$dados['time'].',
+                    "action_source": "website",
+                    "event_source_url": "'.$dados['url'].'",
+                    "event_id": "'.$dados['fbid'].'",
+                    "user_data": {
+                        "em": [
+                            "'.$dados['email'].'"
+                        ],
+                        "ph": [
+                            "'.$dados['phone'].'"
+                        ],
+                        "client_ip_address": "'.$dados['ip'].'",
+                        "client_user_agent": "'.$dados['agent'].'",
+                        "fbc": "'.$dados['fbc'].'",
+                        "fbp": "'.$dados['fbp'].'"
+                    }
+                }
+                ] ' . (env('FB_API_TEST') == true ? ',"test_event_code": "'. env('FB_TESTCODE') . '"' : '') . '
+        }';
 
-        $this->send();
+        //dd($this->data);
+        $return = $this->send();
 
-        return $this->fbScript();
+        return $return;
     
     }
     
