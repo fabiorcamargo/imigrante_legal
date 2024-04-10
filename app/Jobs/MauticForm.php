@@ -38,7 +38,7 @@ class MauticForm implements ShouldQueue
 
         try {
 
-            $response = Http::post('https://mautic.profissionalizaead.com.br/form/submit?formId=2', $this->data);
+            $response = Http::post('https://imi.meusestudosead.com.br/form/submit?formId=1', $this->data);
 
             // Obtenha o corpo da resposta como uma string
             $responseBody = $response->getBody()->getContents();

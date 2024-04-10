@@ -50,7 +50,7 @@
       <div class="card-body">
         <x-authentication-card-logo />
 
-        <style type="text/css" scoped>
+        {{-- <style type="text/css" scoped>
           .mauticform-field-hidden {
             display: none
           }
@@ -111,10 +111,10 @@
             <input type="hidden" name="mauticform[return]" id="mauticform_imigrante1_return" value="">
             <input type="hidden" name="mauticform[formName]" id="mauticform_imigrante1_name" value="imigrante1">
           </form>
-        </div>
+        </div> --}}
 
 
-        {{-- <x-splade-form action="{{route('lead.store')}}">
+        <x-splade-form action="{{route('lead.store')}}">
 
           <x-splade-input name="nome" label="Nome Completo" placeholder="Ex. Renato Oliveira" autocomplete="name" />
 
@@ -146,7 +146,7 @@
           inputTelefone.addEventListener('input', function() {
           const value = this.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
           if (value.length <= 10) { this.value=value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3' ); } else {
-            this.value=value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3' ); } }); </x-splade-script> --}}
+            this.value=value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3' ); } }); </x-splade-script>
 
       </div>
     </div>

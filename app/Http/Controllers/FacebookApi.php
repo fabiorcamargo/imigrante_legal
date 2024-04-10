@@ -125,8 +125,6 @@ class FacebookApi extends Controller
     
     
     public function lead(Request $request, $email, $phone){
-    
-        //dd($request->ip(), $request->header('User-Agent'));
 
         $url = request()->url();
         $ip = $request->ip();

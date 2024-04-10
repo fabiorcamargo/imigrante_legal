@@ -60,8 +60,6 @@ class LeadController extends Controller
 
     public function store(Request $request)
     {
-
-
         $customMessages = [
             'telefone.min' => 'Por favor insira o telefone com DDD e o 9 adicional conforme o exemplo (11) 9 98765-4321.'
         ];
