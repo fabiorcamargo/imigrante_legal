@@ -27,3 +27,19 @@ Route::get('/fb_test/{email}/{phone}', [FacebookApi::class, 'lead'])->name('fb_t
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/test', function (Request $request) {
+
+    $content = $request->getContent();
+
+    // Caminho para o arquivo de texto onde você quer salvar os dados
+    $filePath = storage_path('app/webhook-data.txt');
+
+    // Salva o conteúdo no arquivo de texto
+    file_put_contents($filePath, $content);
+
+    // Retorna uma resposta de sucesso
+    return response()->json(['message' => 'Dados salvos com sucesso!']);
+    //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
+    //new welcome_mail(auth()->user());
+});
