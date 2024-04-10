@@ -69,17 +69,13 @@ class LeadController extends Controller
 
         $data = $request->validate($this->model->rules(), $customMessages);
 
-        
-
         $data['telefone'] = "55" .   preg_replace('/[^A-Za-z0-9]/', '', $data['telefone']);
 
         $state = (States::find($data['state_id'])->title);
 
         $normalizedString = Normalizer::normalize($state, Normalizer::FORM_D);
 
-        $estado = preg_replace('/[^a-zA-Z0-9]/', '', $normalizedString);
-
-        
+        $estado = preg_replace('/[^a-zA-Z0-9]/', '', $normalizedString); 
         
         $response = $this->model->create($data);
 
@@ -101,13 +97,13 @@ class LeadController extends Controller
 
         // dispatch(new MauticForm($mauticForm, $response));
 
-        $fb = new FacebookApi();
+        //$fb = new FacebookApi();
 
-        $event = $fb->lead2($data['email'], $data['telefone']);
+        $modalsuccess = 'teste';
 
         Toast::title('Cadastro realizado com sucesso!')->autoDismiss(5);
-
-        return redirect()->route('welcome', compact('event'));
+dd(route('welcome', compact('event')));
+        return redirect()->route('welcome', compact('modalsuccess'));
     }
 
 

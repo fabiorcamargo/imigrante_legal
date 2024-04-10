@@ -153,7 +153,7 @@ class FacebookApi extends Controller
                 $access_token = env('FACEBOOK_API_TOKEN');
 
                 // Endpoint da API do Facebook para eventos
-                $api_url = 'https://graph.facebook.com/v15.0/'. env('FB_ID') .'/events';
+                $api_url = 'https://graph.facebook.com/v18.0/'. env('FB_ID') .'/events';
                 
                 // Dados do evento que você deseja enviar
                 $event_data = [

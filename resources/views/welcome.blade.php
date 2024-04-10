@@ -42,7 +42,7 @@
   {{--</x-splade-lazy>--}}
   
 
-  @if((request()->input('event')) !== null)
+  @if((request()->input('modalsuccess')) !== null)
   
   <div class="flex items-center justify-center h-screen">
     
@@ -63,9 +63,9 @@
     <div class="fixed top-0 left-0 w-full h-full bg-black opacity-75 z-50"></div>
   </div>
   
-  <x-splade-script>
+  {{-- <x-splade-script>
     {!!(request()->input('event'))!!}
-  </x-splade-script>
+  </x-splade-script> --}}
 
   @endif
 

@@ -10,6 +10,27 @@
     <head>
       <title>Validação de Número de Celular Brasileiro</title>
 
+      <script type="text/javascript">
+        /** This section is only needed once per page if manually copying **/
+        if (typeof MauticSDKLoaded == 'undefined') {
+            var MauticSDKLoaded = true;
+            var head            = document.getElementsByTagName('head')[0];
+            var script          = document.createElement('script');
+            script.type         = 'text/javascript';
+            script.src          = 'https://imi.meusestudosead.com.br/media/js/mautic-form.js?vdce848bf';
+            script.onload       = function() {
+                MauticSDK.onLoad();
+            };
+            head.appendChild(script);
+            var MauticDomain = 'https://imi.meusestudosead.com.br';
+            var MauticLang   = {
+                'submittingMessage': "Por favor, aguarde..."
+            }
+        }else if (typeof MauticSDK != 'undefined') {
+            MauticSDK.onLoad();
+        }
+    </script>
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
         $(document).ready(function() {
@@ -49,14 +70,10 @@
     <div class="card flex-shrink-0 w-full max-w-sm shadow-md  bg-base-100">
       <div class="card-body">
         <x-authentication-card-logo />
-
-
-
-        <style type="text/css" scoped>
-          .mauticform-field-hidden {
-            display: none
-          }
-        </style>
+      
+      <style type="text/css" scoped>
+          .mauticform-field-hidden { display:none }
+      </style>
         <div id="mauticform_wrapper_imigrante1" class="mauticform_wrapper">
           <form autocomplete="false" role="form" method="post" class="form"
             action="https://imi.meusestudosead.com.br/form/submit?formId=1" id="mauticform_imigrante1"
@@ -123,13 +140,17 @@
                   <span class="mauticform-errormsg" style="display:none;">Isso é obrigatório.</span>
                 </div>
 
-                <div id="mauticform_imigrante1_submit"
+                {{-- <div id="mauticform_imigrante1_submit"
                   class="mauticform-row mauticform-button-wrapper mauticform-field-5">
                   <br>
                   <button
                     class="border rounded-md shadow-sm font-bold py-2 px-4 focus:outline-none focus:ring focus:ring-opacity-50 bg-indigo-500 hover:bg-indigo-700 text-white border-transparent focus:border-indigo-300 focus:ring-indigo-200 btn btn-block btn-primary"
                     name="mauticform[submit]" value="1" id="mauticform_input_imigrante1_submit"
                     type="submit">Cadastrar</button>
+                </div> --}}
+
+                <div id="mauticform_imigrante1_submit" class="py-4 mauticform-row mauticform-button-wrapper mauticform-field-10">
+                  <button class="btn btn-default mauticform-button" name="mauticform[submit]" value="1" id="mauticform_input_imigrante1_submit" type="submit">CADASTRAR</button>
                 </div>
               </div>
             </div>

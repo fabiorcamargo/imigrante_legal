@@ -11,7 +11,7 @@
 
 
 
-    <!-- Meta Pixel Code -->
+    {{-- <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,7 +26,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=167867373000120&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
+    <!-- End Meta Pixel Code --> --}}
 
     <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-C72LWK11J5"></script>
@@ -38,26 +38,7 @@
         gtag('config', 'G-C72LWK11J5');
         </script>
 
-<script type="text/javascript">
-    /** This section is only needed once per page if manually copying **/
-    if (typeof MauticSDKLoaded == 'undefined') {
-        var MauticSDKLoaded = true;
-        var head            = document.getElementsByTagName('head')[0];
-        var script          = document.createElement('script');
-        script.type         = 'text/javascript';
-        script.src          = 'https://imi.meusestudosead.com.br/media/js/mautic-form.js?vdce848bf';
-        script.onload       = function() {
-            MauticSDK.onLoad();
-        };
-        head.appendChild(script);
-        var MauticDomain = 'https://imi.meusestudosead.com.br';
-        var MauticLang   = {
-            'submittingMessage': "Por favor, aguarde..."
-        }
-    }else if (typeof MauticSDK != 'undefined') {
-        MauticSDK.onLoad();
-    }
-</script>
+
 
 
         
