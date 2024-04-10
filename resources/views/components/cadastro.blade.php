@@ -142,7 +142,7 @@
               
             <input type="hidden" name="mauticform[fbc]" value="{{isset($_COOKIE['_fbc']) ? $_COOKIE['_fbc'] : null;}}" id="mauticform_input_imigrante1_fbc" class="mauticform-input">
             <input type="hidden" name="mauticform[fbp]" value="{{isset($_COOKIE['_fbp']) ? $_COOKIE['_fbp'] : null;}}" id="mauticform_input_imigrante1_fbp" class="mauticform-input">
-            <input type="text" name="mauticform[agent]" value="{{request()->userAgent()}}" id="mauticform_input_imigrante1_agent" class="mauticform-input">
+            <input type="hidden" name="mauticform[agent]" value="{{request()->userAgent()}}" id="mauticform_input_imigrante1_agent" class="mauticform-input">
             
             <input type="hidden" name="mauticform[return]" id="mauticform_imigrante1_return" value="">
             <input type="hidden" name="mauticform[formName]" id="mauticform_imigrante1_name" value="imigrante1">
