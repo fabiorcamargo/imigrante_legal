@@ -140,7 +140,7 @@
         </x-splade-form>
 
 
-        {{-- <x-splade-script>
+        <x-splade-script>
           const inputTelefone = document.getElementById('mauticform_input_imigrante1_telefone1');
 
           inputTelefone.addEventListener('input', function() {
