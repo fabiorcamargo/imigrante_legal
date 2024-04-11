@@ -1,9 +1,8 @@
 <div class="hero min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse">
     <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Cadastre-se Agora!</h1>
-      <p class="py-6">Cadastre-se para participar do Programa Imigrante Legal, conheça todos os processos envolvidos
-        para realizar o sonho de morar em outro País.</p>
+      <h1 class="text-5xl font-bold">Inscreva-se Agora!</h1>
+      <p class="py-6">Inscreva-se para participar do Programa Imigrante Legal, nosso representante entrará em contato com você para agendar um horário para lhe atender.</p>
     </div>
 
 

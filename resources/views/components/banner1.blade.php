@@ -20,7 +20,7 @@
                 <div class="sm:text-center lg:text-left">
                     <h2
                         class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
-                        {{env('BANNER_SLOGAN1')}}
+                        {{request()->input('cidade') ? 'Você de ' . request()->input('cidade') : "" }} {{env('BANNER_SLOGAN1')}}
                         <br class="xl:hidden" />
                         <span class="text-indigo-600 pe-4">{{env('BANNER_SLOGAN2')}}</span>
                     </h2>
@@ -66,8 +66,8 @@
             </radialGradient>
           </defs>
         </svg>
-        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-10 lg:text-left">
-          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">{{env('MARKETING1')}}</h2>
+        <div class="mx-auto text-center lg:mx-0 lg:flex-auto lg:py-10 lg:text-left">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">{{env('MARKETING1')}} {{request()->input('cidade') ? request()->input('cidade') : "Sua Cidade" }}</h2>
           <p class="mt-6 text-lg leading-8 text-gray-300">{{env('MARKETING2')}}</p>
           {{--<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
             <a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get started</a>
