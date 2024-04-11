@@ -216,4 +216,6 @@ Route::middleware(['splade'])->group(function () {
         //Mail::to(auth()->user()->email)->send(new welcome_mail(auth()->user()));
         //new welcome_mail(auth()->user());
     });
+
+    Route::view('/privacidade', 'privacity');
 });
