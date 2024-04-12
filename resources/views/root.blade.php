@@ -50,7 +50,7 @@
 <body class="font-sans antialiased">
     @splade
 
-    
+    <script src="//imi.meusestudosead.com.br/focus/1.js" type="text/javascript" charset="utf-8" async="async"></script>
 </body>
 
 </html>
