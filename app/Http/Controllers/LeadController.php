@@ -102,7 +102,7 @@ class LeadController extends Controller
         $modalsuccess = 'teste';
 
         Toast::title('Cadastro realizado com sucesso!')->autoDismiss(5);
-dd(route('welcome', compact('event')));
+//dd(route('welcome', compact('event')));
         return redirect()->route('welcome', compact('modalsuccess'));
     }
 
