@@ -189,12 +189,12 @@ Route::middleware(['splade'])->group(function () {
 
         $counties = Company::all();
         foreach ($counties as $country) {
-            $sitemap->add(Url::create($url.'country/' . $country->id));
+            $sitemap->add(Url::create("$url/country/" . $country->id));
         }
 
         $posts = CompanyJob::all();
         foreach ($posts as $post) {
-            $sitemap->add(Url::create($url.'post/' . $post->id));
+            $sitemap->add(Url::create("$url/post/" . $post->id));
         }
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
