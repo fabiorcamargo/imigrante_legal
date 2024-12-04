@@ -29,19 +29,10 @@
     <!-- End Meta Pixel Code --> --}}
 
     <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C72LWK11J5"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-C72LWK11J5');
-        </script>
 
 
 
 
-        
 
     @spladeHead
     @vite('resources/js/app.js')
@@ -49,8 +40,6 @@
 
 <body class="font-sans antialiased">
     @splade
-
-    <script src="//imi.meusestudosead.com.br/focus/1.js" type="text/javascript" charset="utf-8" async="async"></script>
 </body>
 
 </html>
